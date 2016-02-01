@@ -1,0 +1,11 @@
+HFA 0.0.2
+==========
+
+* Updated `connect` and `extract` functions.
+
+* Introduced wrapper functions.
+
+HFA 0.0.1
+==========
+
+* The first version of the `HFA` packagem, depending on the `SOAP package`.

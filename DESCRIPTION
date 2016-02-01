@@ -1,0 +1,15 @@
+Package: HFA
+Type: Package
+Title: R interface to European Health For All Database (HFA-DB)
+Version: 0.0.2
+Date: 2016-02-01
+Authors@R: person("Brecht", "Devleesschauwer",
+                  role = c("aut", "cre"),
+                  email = "brechtdv@gmail.com")
+Author: Brecht Devleesschauwer [aut, cre]
+Maintainer: Brecht Devleesschauwer <brechtdv@gmail.com>
+Description: R interface to European Health For All database (HFA-DB). See also http://www.euro.who.int/en/data-and-evidence/databases/european-health-for-all-database-hfa-db.
+Depends: R (>= 3.2.0)
+Imports: RCurl, rjson, XML
+License: GPL (>= 2)
+LazyData: yes
