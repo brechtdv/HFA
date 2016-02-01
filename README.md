@@ -1,11 +1,15 @@
-### HFA
+## HFA
 
-R interface to European Health For All database (HFA-DB)
+_R interface to European Health For All Database (HFA-DB)_
+
+#### Development version
+
+The current version of the HFA package is still under development and not yet ready to be released.
 
 #### Download and install
 
     devtools::install_github("brechtdv/HFA")
-	library("HFA")
+    library("HFA")
 
 #### Background information
 
