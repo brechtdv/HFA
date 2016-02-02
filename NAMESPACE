@@ -1,3 +1,4 @@
+importFrom(RCurl, url.exists)
 importFrom(RCurl, curlPerform)
 importFrom(RCurl, basicTextGatherer)
 importFrom(curl, nslookup)
