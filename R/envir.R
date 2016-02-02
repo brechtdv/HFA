@@ -28,18 +28,22 @@ function() {
 
 ## set HFA database
 setHFADB <-
-function(url) {
+function(url, verbose = TRUE) {
   ## set .hfa url
   HFAset("url", url)
 
   ## update choices
   HFAset("lan", getLanguages()$Id)
-  HFAset("reg", getRegions())
-  HFAset("grp", getIndicatorGroups())
+  HFAset("reg", getRegions()$RegID)
+  HFAset("grp", getIndicatorGroups()$Id)
+
+  ## database string
+  if (verbose) print(getDBVersion())
 }
 
 ## set default HFA database at startup
 .onAttach <-
 function(libname, pkgname) {
-  setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php")
+  setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
+  packageStartupMessage(paste0("\n", getDBVersion(), "\n"))
 }
