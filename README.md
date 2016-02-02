@@ -21,4 +21,4 @@ http://www.euro.who.int/en/data-and-evidence/databases/european-health-for-all-d
 
 #### Gettings started
 
-Read the HFA [vignette](https://github.com/brechtdv/HFA/blob/master/vignettes/getting-started.Rmd) for an overview of available functionalities.
+Read the HFA [vignette](https://github.com/brechtdv/HFA/blob/master/vignettes/HFA.Rmd) for an overview of available functionalities.
