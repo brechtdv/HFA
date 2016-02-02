@@ -1,0 +1,59 @@
+---
+title: "HFA package"
+author: "Brecht Devleesschauwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HFA package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+library(HFA)
+```
+
+### Introduction
+
+The HFA package provides an R interface to the European Health for All database (HFA-DB).
+
+HFA-DB provides a selection of core health statistics covering basic demographics, health status, health determinants and risk factors, and health-care resources, utilization and expenditure in the 53 countries in the WHO European Region. It allows queries for country, intercountry and regional analyses, and displays the results in tables, graphs or maps, which can be exported for further use.
+
+The data are compiled from various sources, including a network of country experts, WHO/Europe's technical programmes and partner organizations, such as agencies of the United Nations system, the statistical office of the European Union (EUROSTAT) and the Organisation for Economic Cooperation and Development. HFA-DB is updated twice a year.
+
+For more info on HFA-DB, please visit http://www.euro.who.int/en/data-and-evidence/databases/european-health-for-all-database-hfa-db.
+
+### Connecting to the HFA database
+
+To connect to your HFA database of choice, use function `setHFADB()`. By default, the WHO-EURO HFA database will be loaded on package startup.
+
+To view the current HFA database, use function `getHFADB()`.
+
+```{r}
+getHFADB()
+```
+
+### Extracting data from the HFA database
+
+```{r}
+## show available languages, regions, indicator groups
+getLanguages()
+getRegions()
+getIndicatorGroups()
+
+## show available countries for default region
+getCountries("EUR")
+
+## show indicators belonging to group 4
+getIndicators(4)
+
+## find indicators related to 'food'
+findIndicators("food")
+
+## show definition of indicator '4010'
+getDefinitions("4010")
+
+## extract data for indicator '4010' and '4021' for Belgium
+## by not specifying 'year', we extract data for all years
+getData(c("4010", "4021"), country = "BEL")
+```

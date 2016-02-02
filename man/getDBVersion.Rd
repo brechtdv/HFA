@@ -13,4 +13,7 @@ getDBVersion()
 
 \author{\email{brechtdv@gmail.com}}
 
-\seealso{}
+\seealso{
+  \code{\link{getHFADB}} to get current database URL\cr
+  \code{\link{setHFADB}} to set database URL
+}
