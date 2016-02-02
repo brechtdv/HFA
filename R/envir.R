@@ -29,6 +29,16 @@ function() {
 ## set HFA database
 setHFADB <-
 function(url, verbose = TRUE) {
+  ## check arguments
+  if (class(url) != "character")
+    stop(sQuote("url"), " must be of class character.")
+  if (class(verbose) != "logical")
+    stop(sQuote("verbose"), " must be of class logical.")
+
+  ## check if 'url' exists
+  if (!url.exists(url))
+    stop("provided URL does not exist.")
+
   ## set .hfa url
   HFAset("url", url)
 
