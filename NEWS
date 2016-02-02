@@ -7,7 +7,9 @@ HFA 0.0.2
 
 * Introduced .hfa environment.
 
+* Introduced check for internet access.
+
 HFA 0.0.1
 ==========
 
-* The first version of the `HFA` packagem, depending on the `SOAP package`.
+* The first version of the `HFA` package, depending on the `SOAP package`.
