@@ -5,6 +5,8 @@ HFA 0.0.2
 
 * Introduced wrapper functions.
 
+* Introduced .hfa environment.
+
 HFA 0.0.1
 ==========
 
