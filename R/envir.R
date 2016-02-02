@@ -33,7 +33,7 @@ function(url) {
   HFAset("url", url)
 
   ## update choices
-  HFAset("lan", getLanguages())
+  HFAset("lan", getLanguages()$Id)
   HFAset("reg", getRegions())
   HFAset("grp", getIndicatorGroups())
 }
