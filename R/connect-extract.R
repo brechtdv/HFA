@@ -85,6 +85,12 @@ function(f, ...) {
 ## generic connect wrapper
 connect <-
 function(f, ...) {
+  ## check for internet access
+  if (!internet()) {
+    stop("Internet access is required to access the database.")
+  }
+
+  ## continue if internet access
   reader <- basicTextGatherer()
   curlPerform(url = getHFADB(),
               httpheader = c(Accept = "text/xml"),
