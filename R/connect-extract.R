@@ -87,7 +87,7 @@ connect <-
 function(f, ...) {
   ## check for internet access
   if (!internet()) {
-    stop("Internet access is required to access the database.")
+    stop("internet access is required to access the database")
   }
 
   ## continue if internet access
