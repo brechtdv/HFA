@@ -41,9 +41,21 @@ function(url, verbose = TRUE) {
   if (verbose) print(getDBVersion())
 }
 
+## check for internet access
+internet <-
+function() {
+  !is.null(nslookup("r-project.org", error = FALSE))
+}
+
 ## set default HFA database at startup
 .onAttach <-
 function(libname, pkgname) {
-  setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
-  packageStartupMessage(paste0("Connected to:\n", getDBVersion(), "\n"))
+  if (internet()) {
+    setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
+    packageStartupMessage(paste0("Connected to:\n", getDBVersion(), "\n"))
+
+  } else {
+    packageStartupMessage("Internet access is required to use the HFA package.\n",
+                          "Use setHFADB() to initiate your HFA session.\n")
+  }
 }

@@ -1,5 +1,6 @@
 importFrom(RCurl, curlPerform)
 importFrom(RCurl, basicTextGatherer)
+importFrom(curl, nslookup)
 importFrom(rjson, fromJSON)
 importFrom(XML, xmlToList)
 
