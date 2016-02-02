@@ -86,7 +86,7 @@ function(f, ...) {
 connect <-
 function(f, ...) {
   reader <- basicTextGatherer()
-  curlPerform(url = "http://sic.hi.lt/DPS/ws/dps_ws.php",
+  curlPerform(url = getHFADB(),
               httpheader = c(Accept = "text/xml"),
               postfields = requestBody(f, ...),
               writefunction = reader$update)

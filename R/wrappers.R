@@ -33,12 +33,12 @@ function() {
 }
 
 getRegions <-
-function(language = c("en", "ru")) {
+function(language) {
   ## .. args   'lang' as string
   ## .. output dataframe
 
   ## check arguments
-  language <- match.arg(language)
+  language <- match.arg(language, HFAget("lan"))
 
   ## send request to WSDL
   con <- connect("getRegionsJSON", lang = language)
@@ -51,12 +51,13 @@ function(language = c("en", "ru")) {
 }
 
 getCountries <-
-function(region = "EUR", language = c("en", "ru")) {
+function(region, language) {
   ## .. args   'lang' as string, 'reg' as string
   ## .. output dataframe
 
   ## check arguments
-  language <- match.arg(language)
+  region   <- match.arg(region, HFAget("reg"))
+  language <- match.arg(language, HFAget("lan"))
 
   ## send request to WSDL
   con <- connect("getCountriesJSON", lang = language, reg = region)
@@ -88,12 +89,12 @@ function(country = NULL) {
 }
 
 getIndicatorGroups <-
-function(language = c("en", "ru")) {
+function(language) {
   ## .. args   'lang' as string
   ## .. output dataframe
 
   ## check arguments
-  language <- match.arg(language)
+  language <- match.arg(language, HFAget("lan"))
 
   ## send request to WSDL
   con <- connect("getIndicatorGroupsJSON", lang = language)
@@ -106,7 +107,7 @@ function(language = c("en", "ru")) {
 }
 
 getIndicators <-
-function(group, language = c("en", "ru")) {
+function(group, language) {
   ## .. args   'lang' as string, 'grp' as string
   ## .. output dataframe
 
@@ -116,8 +117,8 @@ function(group, language = c("en", "ru")) {
   if (is.numeric(group))
     group <- as.character(group)
 
-  group <- match.arg(group, 1:8)
-  language <- match.arg(language)
+  group    <- match.arg(group, HFAget("grp"))
+  language <- match.arg(language, HFAget("lan"))
 
   ## send request to WSDL
   con <- connect("getIndicatorsJSON", lang = language, grp = group)
@@ -130,12 +131,12 @@ function(group, language = c("en", "ru")) {
 }
 
 getDefinitions <-
-function(indicator, language = c("en", "ru")) {
+function(indicator, language) {
   ## .. args   'lang' as string, 'defs' as ArrayOfString
   ## .. output dataframe
 
   ## check arguments
-  language <- match.arg(language)
+  language <- match.arg(language, HFAget("lan"))
 
   ## send request to WSDL
   con <- connect("getDefinitionsJSON", lang = language, defs = indicator)
@@ -148,14 +149,14 @@ function(indicator, language = c("en", "ru")) {
 }
 
 findIndicators <-
-function(text, language = c("en", "ru")) {
+function(text, language) {
   ## .. args   'lang' as string, 'txt' as string
   ## .. output dataframe
 
   ## check arguments
   if (length(text) > 1)
     stop(sQuote("text"), " should be of length 1")
-  language <- match.arg(language)
+  language <- match.arg(language, HFAget("lan"))
 
   ## send request to WSDL
   con <- connect("findIndicatorsJSON", lang = language, txt = text)
@@ -168,7 +169,7 @@ function(text, language = c("en", "ru")) {
 }
 
 getData <-
-function(indicator, year = NULL, country = NULL, region = "EUR") {
+function(indicator, year = NULL, country = NULL, region = NULL) {
   ## .. args   'yrs' as ArrayOfInteger, 'inds' as ArrayOfString
   ## ..        'reg' as String, 'cntrs' as ArrayOfString
   ## .. output dataframe
@@ -177,6 +178,9 @@ function(indicator, year = NULL, country = NULL, region = "EUR") {
   if (missing(indicator))
     stop(sQuote("indicator"), " is missing, with no default.\n",
          "See '?getIndicators' and '?findIndicators' for indicator codes.")
+
+  if (!is.null(region))
+    region <- match.arg("region", HFAget("reg"), several.ok = TRUE)
 
   ## send request to WSDL
   con <-
