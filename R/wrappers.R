@@ -33,7 +33,7 @@ function() {
 }
 
 getRegions <-
-function(language) {
+function(language = NULL) {
   ## .. args   'lang' as string
   ## .. output dataframe
 
@@ -51,7 +51,7 @@ function(language) {
 }
 
 getCountries <-
-function(region, language) {
+function(region, language = NULL) {
   ## .. args   'lang' as string, 'reg' as string
   ## .. output dataframe
 
@@ -89,7 +89,7 @@ function(country = NULL) {
 }
 
 getIndicatorGroups <-
-function(language) {
+function(language = NULL) {
   ## .. args   'lang' as string
   ## .. output dataframe
 
@@ -107,7 +107,7 @@ function(language) {
 }
 
 getIndicators <-
-function(group, language) {
+function(group, language = NULL) {
   ## .. args   'lang' as string, 'grp' as string
   ## .. output dataframe
 
@@ -131,7 +131,7 @@ function(group, language) {
 }
 
 getDefinitions <-
-function(indicator, language) {
+function(indicator, language = NULL) {
   ## .. args   'lang' as string, 'defs' as ArrayOfString
   ## .. output dataframe
 
@@ -149,7 +149,7 @@ function(indicator, language) {
 }
 
 findIndicators <-
-function(text, language) {
+function(text, language = NULL) {
   ## .. args   'lang' as string, 'txt' as string
   ## .. output dataframe
 
