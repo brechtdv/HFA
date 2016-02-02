@@ -9,6 +9,8 @@ HFA 0.0.2
 
 * Introduced check for internet access.
 
+* Introduced help files and vignette.
+
 HFA 0.0.1
 ==========
 
