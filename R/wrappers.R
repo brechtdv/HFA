@@ -177,7 +177,7 @@ function(indicator, year = NULL, country = NULL, region = NULL) {
   ## check arguments
   if (missing(indicator))
     stop(sQuote("indicator"), " is missing, with no default.\n",
-         "See '?getIndicators' and '?findIndicators' for indicator codes.")
+         "See '?getIndicators' and '?findIndicators' for indicator IDs.")
 
   if (!is.null(region))
     region <- match.arg("region", HFAget("reg"), several.ok = TRUE)
