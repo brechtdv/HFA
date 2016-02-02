@@ -45,5 +45,5 @@ function(url, verbose = TRUE) {
 .onAttach <-
 function(libname, pkgname) {
   setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
-  packageStartupMessage(paste0("\n", getDBVersion(), "\n"))
+  packageStartupMessage(paste0("Connected to:\n", getDBVersion(), "\n"))
 }
