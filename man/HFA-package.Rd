@@ -11,8 +11,8 @@
 \details{
   \tabular{ll}{
     Package:    \tab  HFA\cr
-    Version:    \tab  0.0.2\cr
-    Date:       \tab  2016-02-01\cr
+    Version:    \tab  0.0.0.9003\cr
+    Date:       \tab  2016-02-02\cr
     Authors:    \tab  Brecht Devleesschauwer\cr
     Maintainer: \tab  \email{brechtdv@gmail.com}\cr
     URL:        \tab  \url{https://github.com/brechtdv/HFA}\cr
