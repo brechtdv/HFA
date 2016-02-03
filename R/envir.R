@@ -66,12 +66,13 @@ function(libname, pkgname) {
   if (internet()) {
     setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
     packageStartupMessage(
-      cat(paste(rep("\b", 12), collapse = "")),
+      paste(rep("\b", 13), collapse = ""),
       paste0("Connected to:\n", getDBVersion(), "\n"))
 
   } else {
+    HFAset("url", NULL)
     packageStartupMessage(
-      cat(paste(rep("\b", 12), collapse = "")),
+      paste(rep("\b", 13), collapse = ""),
       "Internet access is required to use the HFA package.\n",
       "Use setHFADB() to initiate your HFA session.\n")
   }
