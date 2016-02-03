@@ -60,7 +60,7 @@ function() {
 ## set default HFA database at startup
 .onAttach <-
 function(libname, pkgname) {
-  packageStartupMessage("Connecting...")
+  packageStartupMessage("Connecting...", appendLF = FALSE)
   flush.console()
 
   if (internet()) {
