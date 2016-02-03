@@ -1,5 +1,12 @@
-HFA 0.0.2
-==========
+HFA 0.0.0.9003
+==============
+
+* Changed version numbering rules.
+
+* Added 'Connecting...' string on startup.
+
+HFA 0.0.0.9002
+==============
 
 * Updated `connect` and `extract` functions.
 
@@ -11,7 +18,7 @@ HFA 0.0.2
 
 * Introduced help files and vignette.
 
-HFA 0.0.1
-==========
+HFA 0.0.0.9001
+==============
 
 * The first version of the `HFA` package, depending on the `SOAP package`.

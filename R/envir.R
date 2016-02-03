@@ -60,6 +60,9 @@ function() {
 ## set default HFA database at startup
 .onAttach <-
 function(libname, pkgname) {
+  packageStartupMessage("Connecting...\r")
+  flush.console()
+
   if (internet()) {
     setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
     packageStartupMessage(paste0("Connected to:\n", getDBVersion(), "\n"))
