@@ -60,15 +60,19 @@ function() {
 ## set default HFA database at startup
 .onAttach <-
 function(libname, pkgname) {
-  packageStartupMessage("Connecting...\r")
+  packageStartupMessage("Connecting...")
   flush.console()
 
   if (internet()) {
     setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php", verbose = FALSE)
-    packageStartupMessage(paste0("Connected to:\n", getDBVersion(), "\n"))
+    packageStartupMessage(
+      cat(paste(rep("\b", 12), collapse = "")),
+      paste0("Connected to:\n", getDBVersion(), "\n"))
 
   } else {
-    packageStartupMessage("Internet access is required to use the HFA package.\n",
-                          "Use setHFADB() to initiate your HFA session.\n")
+    packageStartupMessage(
+      cat(paste(rep("\b", 12), collapse = "")),
+      "Internet access is required to use the HFA package.\n",
+      "Use setHFADB() to initiate your HFA session.\n")
   }
 }
