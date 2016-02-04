@@ -8,8 +8,10 @@ The current version of the HFA package is still under development and not yet re
 
 #### Download and install
 
-    devtools::install_github("brechtdv/HFA")
-    library("HFA")
+```r
+devtools::install_github("brechtdv/HFA")
+library("HFA")
+```
 
 #### Background information
 
