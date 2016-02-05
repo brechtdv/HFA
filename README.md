@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/brechtdv/HFA.svg?branch=master)](https://travis-ci.org/brechtdv/HFA)
+
 ## HFA
 
 _R interface to European Health For All Database (HFA-DB)_
