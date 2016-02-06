@@ -1,3 +1,10 @@
+HFA 0.0.0.9004
+==============
+
+* Fixed CRAN warnings and notes.
+
+* Added `compendium` vignette
+
 HFA 0.0.0.9003
 ==============
 

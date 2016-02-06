@@ -1,3 +1,4 @@
+importFrom(utils, flush.console)
 importFrom(RCurl, url.exists)
 importFrom(RCurl, curlPerform)
 importFrom(RCurl, basicTextGatherer)
