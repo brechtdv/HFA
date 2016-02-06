@@ -23,6 +23,8 @@ The data are compiled from various sources, including a network of country exper
 
 http://www.euro.who.int/en/data-and-evidence/databases/european-health-for-all-database-hfa-db
 
-#### Gettings started
+#### Getting started
 
-Read the HFA [vignette](https://github.com/brechtdv/HFA/blob/master/vignettes/HFA.Rmd) for an overview of available functionalities.
+Read the [HFA vignette](https://rawgit.com/brechtdv/HFA/master/vignettes/HFA.html) for an overview of available functionalities.
+
+Read the [HFA compendium](https://rawgit.com/brechtdv/HFA/master/vignettes/compendium.html) for an overview of available databases and database structures.
