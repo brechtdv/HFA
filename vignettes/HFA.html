@@ -88,221 +88,669 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To connect to your HFA database of choice, use function <code>setHFADB()</code>. By default, the WHO-EURO HFA database will be loaded on package startup.</p>
 <p>To view the current HFA database, use function <code>getHFADB()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getHFADB</span>()</code></pre></div>
-<pre><code>## [1] &quot;http://sic.hi.lt/DPS/ws/dps_ws.php&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;http://sic.hi.lt/DPS/ws/dps_ws.php&quot;</code></pre>
 </div>
 <div id="extracting-data-from-the-hfa-database" class="section level3">
 <h3>Extracting data from the HFA database</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## show available languages, regions, indicator groups
 <span class="kw">getLanguages</span>()</code></pre></div>
-<pre><code>##   Id                                                    Title
-## 1 en                                                  English
-## 2 ru &lt;U+0420&gt;&lt;U+0443&gt;&lt;U+0441&gt;&lt;U+0441&gt;&lt;U+043A&gt;&lt;U+0438&gt;&lt;U+0439&gt;</code></pre>
+<pre><code>#&gt;   Id                                                    Title
+#&gt; 1 en                                                  English
+#&gt; 2 ru &lt;U+0420&gt;&lt;U+0443&gt;&lt;U+0441&gt;&lt;U+0441&gt;&lt;U+043A&gt;&lt;U+0438&gt;&lt;U+0439&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getRegions</span>()</code></pre></div>
-<pre><code>##   RegID RegPID  Title
-## 1   EUR   &lt;NA&gt; EUROPE</code></pre>
+<pre><code>#&gt;   RegID RegPID  Title
+#&gt; 1   EUR   &lt;NA&gt; EUROPE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getIndicatorGroups</span>()</code></pre></div>
-<pre><code>##   Id                                         Title
-## 1  1     DEMOGRAPHIC AND SOCIO-ECONOMIC INDICATORS
-## 2  2                    MORTALITY-BASED INDICATORS
-## 3  3 MORBIDITY, DISABILITY AND HOSPITAL DISCHARGES
-## 4  4                                   LIFE STYLES
-## 5  5                                   ENVIRONMENT
-## 6  6                         HEALTH CARE RESOURCES
-## 7  7       HEALTH CARE UTILIZATION AND EXPENDITURE
-## 8  8                     MATERNAL AND CHILD HEALTH</code></pre>
+<pre><code>#&gt;   Id                                         Title
+#&gt; 1  1     DEMOGRAPHIC AND SOCIO-ECONOMIC INDICATORS
+#&gt; 2  2                    MORTALITY-BASED INDICATORS
+#&gt; 3  3 MORBIDITY, DISABILITY AND HOSPITAL DISCHARGES
+#&gt; 4  4                                   LIFE STYLES
+#&gt; 5  5                                   ENVIRONMENT
+#&gt; 6  6                         HEALTH CARE RESOURCES
+#&gt; 7  7       HEALTH CARE UTILIZATION AND EXPENDITURE
+#&gt; 8  8                     MATERNAL AND CHILD HEALTH</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## show available countries for default region
 <span class="kw">getCountries</span>(<span class="st">&quot;EUR&quot;</span>)</code></pre></div>
-<pre><code>##    RegID  CntrID                      Title
-## 1    EUR     ALB                    Albania
-## 2    EUR     AND                    Andorra
-## 3    EUR     ARM                    Armenia
-## 4    EUR     AUT                    Austria
-## 5    EUR     AZE                 Azerbaijan
-## 6    EUR     BLR                    Belarus
-## 7    EUR     BEL                    Belgium
-## 8    EUR     BIH     Bosnia and Herzegovina
-## 9    EUR     BUL                   Bulgaria
-## 10   EUR     CRO                    Croatia
-## 11   EUR     CYP                     Cyprus
-## 12   EUR     CZH             Czech Republic
-## 13   EUR     DEN                    Denmark
-## 14   EUR     EST                    Estonia
-## 15   EUR     FIN                    Finland
-## 16   EUR     FRA                     France
-## 17   EUR     GEO                    Georgia
-## 18   EUR     DEU                    Germany
-## 19   EUR     GRE                     Greece
-## 20   EUR     HUN                    Hungary
-## 21   EUR     ICE                    Iceland
-## 22   EUR     IRE                    Ireland
-## 23   EUR     ISR                     Israel
-## 24   EUR     ITA                      Italy
-## 25   EUR     KAZ                 Kazakhstan
-## 26   EUR     KGZ                 Kyrgyzstan
-## 27   EUR     LVA                     Latvia
-## 28   EUR     LTU                  Lithuania
-## 29   EUR     LUX                 Luxembourg
-## 30   EUR     MAT                      Malta
-## 31   EUR     MON                     Monaco
-## 32   EUR     MNE                 Montenegro
-## 33   EUR     NET                Netherlands
-## 34   EUR     NOR                     Norway
-## 35   EUR     POL                     Poland
-## 36   EUR     POR                   Portugal
-## 37   EUR     MDA        Republic of Moldova
-## 38   EUR     ROM                    Romania
-## 39   EUR     RUS         Russian Federation
-## 40   EUR     SMR                 San Marino
-## 41   EUR     SRB                     Serbia
-## 42   EUR     SVK                   Slovakia
-## 43   EUR     SVN                   Slovenia
-## 44   EUR     SPA                      Spain
-## 45   EUR     SWE                     Sweden
-## 46   EUR     SWI                Switzerland
-## 47   EUR     TJK                 Tajikistan
-## 48   EUR     MKD                       MKD*
-## 49   EUR     TUR                     Turkey
-## 50   EUR     TKM               Turkmenistan
-## 51   EUR     UKR                    Ukraine
-## 52   EUR     UNK             United Kingdom
-## 53   EUR     UZB                 Uzbekistan
-## 54   EUR     EUR            European Region
-## 55   EUR      EU                         EU
-## 56   EUR    EU15 EU members before May 2004
-## 57   EUR    EU13  EU members since May 2004
-## 58   EUR     CIS                        CIS
-## 59   EUR     CAR         CARINFONET members
-## 60   EUR   Eur-A                      Eur-A
-## 61   EUR Eur-B+C                    Eur-B+C
-## 62   EUR   SEEHN              SEEHN members
-## 63   EUR     NOC           Nordic countries
-## 64   EUR     SMC            Small countries</code></pre>
+<pre><code>#&gt;    RegID  CntrID                      Title
+#&gt; 1    EUR     ALB                    Albania
+#&gt; 2    EUR     AND                    Andorra
+#&gt; 3    EUR     ARM                    Armenia
+#&gt; 4    EUR     AUT                    Austria
+#&gt; 5    EUR     AZE                 Azerbaijan
+#&gt; 6    EUR     BLR                    Belarus
+#&gt; 7    EUR     BEL                    Belgium
+#&gt; 8    EUR     BIH     Bosnia and Herzegovina
+#&gt; 9    EUR     BUL                   Bulgaria
+#&gt; 10   EUR     CRO                    Croatia
+#&gt; 11   EUR     CYP                     Cyprus
+#&gt; 12   EUR     CZH             Czech Republic
+#&gt; 13   EUR     DEN                    Denmark
+#&gt; 14   EUR     EST                    Estonia
+#&gt; 15   EUR     FIN                    Finland
+#&gt; 16   EUR     FRA                     France
+#&gt; 17   EUR     GEO                    Georgia
+#&gt; 18   EUR     DEU                    Germany
+#&gt; 19   EUR     GRE                     Greece
+#&gt; 20   EUR     HUN                    Hungary
+#&gt; 21   EUR     ICE                    Iceland
+#&gt; 22   EUR     IRE                    Ireland
+#&gt; 23   EUR     ISR                     Israel
+#&gt; 24   EUR     ITA                      Italy
+#&gt; 25   EUR     KAZ                 Kazakhstan
+#&gt; 26   EUR     KGZ                 Kyrgyzstan
+#&gt; 27   EUR     LVA                     Latvia
+#&gt; 28   EUR     LTU                  Lithuania
+#&gt; 29   EUR     LUX                 Luxembourg
+#&gt; 30   EUR     MAT                      Malta
+#&gt; 31   EUR     MON                     Monaco
+#&gt; 32   EUR     MNE                 Montenegro
+#&gt; 33   EUR     NET                Netherlands
+#&gt; 34   EUR     NOR                     Norway
+#&gt; 35   EUR     POL                     Poland
+#&gt; 36   EUR     POR                   Portugal
+#&gt; 37   EUR     MDA        Republic of Moldova
+#&gt; 38   EUR     ROM                    Romania
+#&gt; 39   EUR     RUS         Russian Federation
+#&gt; 40   EUR     SMR                 San Marino
+#&gt; 41   EUR     SRB                     Serbia
+#&gt; 42   EUR     SVK                   Slovakia
+#&gt; 43   EUR     SVN                   Slovenia
+#&gt; 44   EUR     SPA                      Spain
+#&gt; 45   EUR     SWE                     Sweden
+#&gt; 46   EUR     SWI                Switzerland
+#&gt; 47   EUR     TJK                 Tajikistan
+#&gt; 48   EUR     MKD                       MKD*
+#&gt; 49   EUR     TUR                     Turkey
+#&gt; 50   EUR     TKM               Turkmenistan
+#&gt; 51   EUR     UKR                    Ukraine
+#&gt; 52   EUR     UNK             United Kingdom
+#&gt; 53   EUR     UZB                 Uzbekistan
+#&gt; 54   EUR     EUR            European Region
+#&gt; 55   EUR      EU                         EU
+#&gt; 56   EUR    EU15 EU members before May 2004
+#&gt; 57   EUR    EU13  EU members since May 2004
+#&gt; 58   EUR     CIS                        CIS
+#&gt; 59   EUR     CAR         CARINFONET members
+#&gt; 60   EUR   Eur-A                      Eur-A
+#&gt; 61   EUR Eur-B+C                    Eur-B+C
+#&gt; 62   EUR   SEEHN              SEEHN members
+#&gt; 63   EUR     NOC           Nordic countries
+#&gt; 64   EUR     SMC            Small countries</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## show indicators belonging to group 4
 <span class="kw">getIndicators</span>(<span class="dv">4</span>)</code></pre></div>
-<pre><code>##    IndID IndPID
-## 1   3010   &lt;NA&gt;
-## 2   3011   3010
-## 3   3012   3010
-## 4   3013   3010
-## 5   3014   3010
-## 6   3015   3010
-## 7   3016   3010
-## 8   3017   3010
-## 9   3020   &lt;NA&gt;
-## 10  3021   3020
-## 11  3022   3020
-## 12  3023   3020
-## 13  3024   3020
-## 14  3025   3020
-## 15  3050   &lt;NA&gt;
-## 16  3051   3050
-## 17  3052   3050
-## 18  3053   3050
-## 19  3054   3050
-## 20  3060   &lt;NA&gt;
-## 21  3061   3060
-## 22  3080   &lt;NA&gt;
-## 23  3081   3080
-## 24  3082   3080
-## 25  3150   &lt;NA&gt;
-## 26  3151   3150
-## 27  3160   &lt;NA&gt;
-## 28  3161   3160
-## 29  3200   &lt;NA&gt;
-## 30  3210   &lt;NA&gt;
-## 31  3211   3210
-## 32  3220   &lt;NA&gt;
-## 33  3221   3220
-## 34  3230   &lt;NA&gt;
-## 35  3240   &lt;NA&gt;
-##                                                                                                                               Title
-## 1                                                                             % of regular daily smokers in the population, age 15+
-## 2                                                                      % of regular daily smokers in the population, age 15+, males
-## 3                                                                    % of regular daily smokers in the population, age 15+, females
-## 4                     Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%)
-## 5              Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%), males
-## 6            Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%), females
-## 7                                                                                    Number cigarettes consumed per person per year
-## 8                                                                 Total number of cigarettes consumed (in million pieces), per year
-## 9         Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%)
-## 10 Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%), males
-## 11 Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%), femal
-## 12           Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%)
-## 13    Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%), males
-## 14  Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%), females
-## 15                                                                             Pure alcohol consumption, litres per capita, age 15+
-## 16                                                                     Spirits consumed in pure alcohol, litres per capita, age 15+
-## 17                                                                        Wine consumed in pure alcohol, litres per capita, age 15+
-## 18                                                                        Beer consumed in pure alcohol, litres per capita, age 15+
-## 19                                                                                         Pure alcohol consumed, litres per capita
-## 20                                                                             Road traffic accidents involving alcohol per 100 000
-## 21                                                                               Number of road traffic accidents involving alcohol
-## 22                                                                           First admissions to drug treatment centres per 100 000
-## 23                                                                             Number of first admissions to drug treatment centres
-## 24                                                                                  Number of deaths from overdose of illicit drugs
-## 25                                                                                   Road traffic accidents with injury per 100 000
-## 26                                                                                     Number of road traffic accidents with injury
-## 27                                                                   People killed or injured in road traffic accidents per 100 000
-## 28                                                                     Number of people killed or injured in road traffic accidents
-## 29                                                                   Average number of calories available per person per day (kcal)
-## 30                                                                                             % of total energy available from fat
-## 31                                                                                             Fat available per person per day (g)
-## 32                                                                                         % of total energy available from protein
-## 33                                                                                         Protein available per person per day (g)
-## 34                                                                      Average amount of cereal available per person per year (kg)
-## 35                                                       Average amount of fruits and vegetables available per person per year (kg)</code></pre>
+<pre><code>#&gt;    IndID IndPID
+#&gt; 1   3010   &lt;NA&gt;
+#&gt; 2   3011   3010
+#&gt; 3   3012   3010
+#&gt; 4   3013   3010
+#&gt; 5   3014   3010
+#&gt; 6   3015   3010
+#&gt; 7   3016   3010
+#&gt; 8   3017   3010
+#&gt; 9   3020   &lt;NA&gt;
+#&gt; 10  3021   3020
+#&gt; 11  3022   3020
+#&gt; 12  3023   3020
+#&gt; 13  3024   3020
+#&gt; 14  3025   3020
+#&gt; 15  3050   &lt;NA&gt;
+#&gt; 16  3051   3050
+#&gt; 17  3052   3050
+#&gt; 18  3053   3050
+#&gt; 19  3054   3050
+#&gt; 20  3060   &lt;NA&gt;
+#&gt; 21  3061   3060
+#&gt; 22  3080   &lt;NA&gt;
+#&gt; 23  3081   3080
+#&gt; 24  3082   3080
+#&gt; 25  3150   &lt;NA&gt;
+#&gt; 26  3151   3150
+#&gt; 27  3160   &lt;NA&gt;
+#&gt; 28  3161   3160
+#&gt; 29  3200   &lt;NA&gt;
+#&gt; 30  3210   &lt;NA&gt;
+#&gt; 31  3211   3210
+#&gt; 32  3220   &lt;NA&gt;
+#&gt; 33  3221   3220
+#&gt; 34  3230   &lt;NA&gt;
+#&gt; 35  3240   &lt;NA&gt;
+#&gt;                                                                                                                               Title
+#&gt; 1                                                                             % of regular daily smokers in the population, age 15+
+#&gt; 2                                                                      % of regular daily smokers in the population, age 15+, males
+#&gt; 3                                                                    % of regular daily smokers in the population, age 15+, females
+#&gt; 4                     Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%)
+#&gt; 5              Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%), males
+#&gt; 6            Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%), females
+#&gt; 7                                                                                    Number cigarettes consumed per person per year
+#&gt; 8                                                                 Total number of cigarettes consumed (in million pieces), per year
+#&gt; 9         Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%)
+#&gt; 10 Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%), males
+#&gt; 11 Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%), femal
+#&gt; 12           Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%)
+#&gt; 13    Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%), males
+#&gt; 14  Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%), females
+#&gt; 15                                                                             Pure alcohol consumption, litres per capita, age 15+
+#&gt; 16                                                                     Spirits consumed in pure alcohol, litres per capita, age 15+
+#&gt; 17                                                                        Wine consumed in pure alcohol, litres per capita, age 15+
+#&gt; 18                                                                        Beer consumed in pure alcohol, litres per capita, age 15+
+#&gt; 19                                                                                         Pure alcohol consumed, litres per capita
+#&gt; 20                                                                             Road traffic accidents involving alcohol per 100 000
+#&gt; 21                                                                               Number of road traffic accidents involving alcohol
+#&gt; 22                                                                           First admissions to drug treatment centres per 100 000
+#&gt; 23                                                                             Number of first admissions to drug treatment centres
+#&gt; 24                                                                                  Number of deaths from overdose of illicit drugs
+#&gt; 25                                                                                   Road traffic accidents with injury per 100 000
+#&gt; 26                                                                                     Number of road traffic accidents with injury
+#&gt; 27                                                                   People killed or injured in road traffic accidents per 100 000
+#&gt; 28                                                                     Number of people killed or injured in road traffic accidents
+#&gt; 29                                                                   Average number of calories available per person per day (kcal)
+#&gt; 30                                                                                             % of total energy available from fat
+#&gt; 31                                                                                             Fat available per person per day (g)
+#&gt; 32                                                                                         % of total energy available from protein
+#&gt; 33                                                                                         Protein available per person per day (g)
+#&gt; 34                                                                      Average amount of cereal available per person per year (kg)
+#&gt; 35                                                       Average amount of fruits and vegetables available per person per year (kg)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## find indicators related to 'food'
 <span class="kw">findIndicators</span>(<span class="st">&quot;food&quot;</span>)</code></pre></div>
-<pre><code>##     Id                                                   Title
-## 1 4010 Microbiological foodborne diseases, number of outbreaks
-## 2 4020          Microbiological foodborne diseases per 100 000
-## 3 4021   Number of cases of microbiological foodborne diseases</code></pre>
+<pre><code>#&gt;     Id                                                   Title
+#&gt; 1 4010 Microbiological foodborne diseases, number of outbreaks
+#&gt; 2 4020          Microbiological foodborne diseases per 100 000
+#&gt; 3 4021   Number of cases of microbiological foodborne diseases</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## show definition of indicator '4010'
-<span class="kw">getDefinitions</span>(<span class="st">&quot;4010&quot;</span>)</code></pre></div>
-<pre><code>##     Id
-## 1 4010
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Title
-## 1 Microbiological foodborne diseases, number of outbreaks\nIndicator code: E220200.T\n\n\n\nInfections   or  intoxications   due  to  microbiologically   contaminated   food   (trichinellosis,\n\nsalmonellosis,  campylobacter infections  etc.). An outbreak  is the exposure of a group of  persons\n\nwith the contaminated   food as  the common origin. It is understood that  national definitions  and\n\nregistration practices  vary significantly. In some countries, an outbreak is counted when more than\n\n15 cases are involved.\n\n\n\nArmenia\n\nSource of data: National Health Information Analytic  Center, Ministry of Health of the  Republic of\n\nArmenia http://moh.am/?section=static_pages/index&amp;id=625&amp;subID=824,29. \n\nData collected annually, reference period: 31 December.\n\n\n\nAustria\n\nData are not available.\n\n\n\nBelgium\n\nSource: Federal Public Service of  Public  Health, Food  Chain  Safety  and Environment,  Scientific\n\nInstitute of Public Health.\n\nThe  number of reported outbreaks more than doubled in 2011  as compared  to  previous years,  which\n\nmight be due to  an  adapted   outbreak investigation procedure   at the  FASFC   and/or   increased\n\nsensibility  by   consumers,   especially  after the  death  of  an adolescent in  a French fastfood\n\nrestaurant   and    the    German   E.     coli    O104:H4   outbreak     involving    many   deaths\n\n(http://www.favv.be/publicationsthematiques/Report-zoonotic-agents-Belgium.asp).\n\n\n\nBosnia and Herzegovina\n\nPublic Health Institute - Department of Epidemiology.\n\n\n\nCyprus\n\nNo data are available\n\n\n\nCzech Republic\n\nSource: Ministry of Health of CR.\n\nReduction in year 2012  caused by the reduction in  number of salmonella outbreaks due to successful\n\nimplementation of veterinary programmes for infection control in poultry.\n\n\n\nDenmark\n\nSource: Annual Report on Zoonoses in Denmark, by DTU FOOD, National Food Institute.\n\nhttp://www.food.dtu.dk/Publikationer/Foedevaresikkerhed/Annual_report_on_zoonoses\n\n\n\nEstonia\n\nSource: Health Protection Inspectorate till 2009. Since 2010 National Health Board.\n\nThe registration of outbreaks generally includes more than 10 cases.\n\n\n\nFinland\n\nSource: Finnish Food Safety Authority (Evira).\n\nDescription of the types of outbreaks covered by the reporting:\n\nAll  general domestic  food- and waterborne outbreaks are reported  in Finland. Illness of more than\n\ntwo persons  from  single  source is considered a cluster and a  suspected outbreak. Sporadic  cases\n\n(except  for     botulism)  and infections acquired abroad  are not  included in  the food poisoning\n\nregister, whereas they are    included    in the   infectious disease register. Family outbreaks are\n\nreported if commercial foodstuffs are supposed to be  a source of  illness or several persons are at\n\nrisk. Obligatory  reporting involves definite communicable diseases and traditional foodborne agents\n\nsuch as those causing intoxications.\n\n\n\nFrance\n\nSource of data: Institute de veille sanitaire (French Institute for public health surveillance)\n\nhttp://www.invs.sante.fr/Dossiers-thematiques/Maladies-infectieuses/Maladies-a-declaration-obligatoi\n\nre/Toxi-infections-alimentaires-collectives\n\n\n\nGeorgia\n\nSource:   National    Centre  for  Disease   Control  and    Public    Health  of  Georgia    (NCDC)\n\n(http://www.ncdc.ge).\n\nThe  increase in number of outbreaks since   year 2010 has  been due to  the change of the reporting\n\nformat in 2009.\n\n\n\nGermany\n\nSource: Robert Koch-Institute, Infectious  Disease Surveillance Report, Chapter 5, table 5.2.1 (data\n\nas of March 1, 2014).\n\nhttp://www.rki.de\n\nCoverage: Data on  outbreaks are  collected  by  the Robert Koch-Institute in  compliance  with  the\n\nInfectious Disease Control Act. According  to §6 Infectious Disease Control Act in Germany cases are\n\nnotifiable  if two or more persons have the same disease (e.g. food   poisoning) and it is  supposed\n\nthat these diseases have the (probably) common origin.\n\nThe  reported figures  are potential foodborne outbreaks (2 and more cases). This means,  because of\n\nthe germ  an infection or intoxication due to microbiologically  contaminated food is  assumed.  The\n\nnotifiable  germs that could be transmitted through  food are: Clostridium botulinum, Brucella spp.,\n\nCampylobacter spp., Cryptosporidium  parvum, Escherichia coli,  enterohemorrhagic  Escherichia  coli\n\n(EHEC), Francisella tularensis, Giardia lamblia, Hepatitis-A and Hepatits-B, Listeria monocytogenes,\n\nSalmonella enterica Serovar  Paratyphi   A-C,  Salmonella  enterica Serovar Typhi,  Salmonella spp.,\n\nShigella spp., Trichinella spiralis, Yersinia enterocolitica and Vibrio cholera.\n\nDue to often transmissions from person to person outbreaks on Norwalk-like virus are excluded.\n\n\n\nIceland\n\nSource:  Until  2001:  Environment  &amp;  Food Agency (formerly The National Centre for Hygiene,   Food\n\nControl and Environmental Protection).\n\n\n\nIreland\n\nSource:  Health Protection Surveillance  Centre.  Relates to the number of outbreaks reported to the\n\nHPSC where food was suspected to have contributed to transmission.\n\n\n\nIsrael\n\nSource: Department of Epidemiology, Ministry of Health.\n\n\n\nLatvia\n\nData are not available.\n\n\n\nLithuania\n\nSource: Centre for Communicable Diseases Control and AIDS.\n\n\n\nLuxembourg\n\nData are not available.\n\n\n\nMalta\n\nAn outbreak is counted when you have 2 or more cases involved. \n\nSource:  Infectious  Disease Prevention &amp;  Control Unit,Health   Promotion  and Disease   Prevention\n\nDirectorate (reviewed the data of 2007-2012. Only confirmed cases are now included. As for outbreaks\n\nonly   confirmed outbreaks of foodborne illness are included. This has resulted in some increase  in\n\nthe numbers of  total confirmed  cases and  a reduction in the numbers of outbreaks in  5 out of six\n\nyears.)\n\n\n\nMontenegro\n\nOutbreak is counted even if there are only a  few cases in  one place  at the same time, e.g. in one\n\nfamily.\n\n\n\nNetherlands\n\nSource: NN=National Notification to Inspectorate for Health  Care (RIVM). Until 2008, the data refer\n\nto the statutory  notifications. From 2009  onwards,  data cover also  and are integrated  with  the\n\nregistration of the Food and Goods Authority\n\n\n\nNorway\n\nData are not available.\n\n\n\nPoland\n\nSource of data: National Institute of Public Health - National Institute of Hygiene.\n\n\n\nRepublic of Moldova\n\nAll acute  intestinal diseases (salmonellosis,  dysentery,  yersiniosis,  rotavirus gastroenteritis,\n\nenteritis caused by  opportunistic enterobacteria, etiologically   nerasshifrovanye acute intestinal\n\ndiseases, etc.) transmitted by microbiologically contaminated food are included into the data. \n\nIn the republic of Moldova, the term intestinal disease outbreak is used when 5 and more cases are\n\nregistered (in the hospital - two or more cases).\n\nAccording to  the  documents of  the Ministry  of  Health of the Republic of Moldova, cases of  food\n\npoisoning are reported to the Ministry of Health and the National Center of Public  Health within 24\n\nhours from the time of detection. The procedure of collecting and transmitting data is as follows:\n\nA medical professional of any  medical institution submits an emergency notification (Form N58/e) to\n\nthe Regional  Public Health  Center (for  each patient suspected  of the  disease  or with a primary\n\ndiagnosis of an acute intestinal disease including   food intoxication). Based on these submissions,\n\nan epidemiological study is conducted to establish the fact of a disease outbreak.   \n\nRegional Centres of Public Health, in turn, inform the Ministry of Health and the National Center of\n\nPublic  Health within 24  hours from  the  time  of  detection and registration  of acute intestinal\n\ndiseases and food poisoning with 5 or more victims (in the hospital - with 2 or more victims). \n\nSource of data:  After  the completion of epidemiological studies  (see above), Regional  Centres of\n\nPublic  Health send final  reports of  the  outbreak investigation to  the National Center of Public\n\nHealth. These reports are analysed and used as an official  source of  information  about intestinal\n\ndisease outbreaks at both national and international levels. \n\nIn  order   to obtain timely   information, investigation and  registration   of intestinal  disease\n\noutbreaks the  guidelines &quot;On information,  investigation  and registration of  outbreaks caused  by\n\nfood&quot; have been developed and approved   by Resolution  of the  Chief  State  Sanitary Doctor of the\n\nRepublic of Moldova ? 2 of 26.01.2006, which include the following definitions:\n\nDisease caused  by food is  a disease of an infectious and  toxic  origin, caused or  supposed to be\n\ncaused by consumption of food;\n\nFood poisoning is an acute disease caused   by food appearing usually acute and in a short period of\n\ntime in two  or more persons  who used the  same food, and is manifest itself as disorders   of  the\n\ngastrointestinal tract,   particularly nausea, vomiting,  fever  and / or   diarrhoea, and    rarely\n\nneurological and muscular symptoms;\n\nOutbreak of a disease caused by food is when two or more people suffer from the same symptoms of the\n\ndisease after eating the same product, and epidemiological data indicate a food product which caused\n\nof the disease.\n\nOutbreak  in the household is  an outbreak affecting 2 or more people from the  same family  or from\n\ndifferent families who consumed  the  same food within  the household.  Indicating an outbreak  that\n\ninvolves 2 or more people  is related to   the need for timely information and investigation of  the\n\nsource of the outbreak caused by food.\n\nCurrently, a  draft of the national guidelines for the investigation of intestinal disease outbreaks\n\nis developed. \n\nIncrease in the number of outbreaks and the number of cases of microbiological foodborne  disease is\n\ndue to the increase   in number of   outbreaks  in catering facilities  and  trade, in summer health\n\nresorts and  kindergartens,  after the   transfer of the control over these objects  to the National\n\nAgency for Food Safety in 2012.\n\n\n\nRomania\n\nSource: National Institute for Public Health.\n\n\n\nSerbia\n\nSource of data: Institute of Public Health  of Serbia.  An outbreak  is counted when 2 or more cases\n\nare  involved. Most outbreaks are  small  &quot;family (household)  outbreak&quot; (3-5 cases) associated with\n\nconsumption of eggs prepared without appropriate heat treatment.\n\n\n\nSlovakia\n\nSource:  Institute of Public Health, Banska Bystrica from 1990.\n\nBreak in time series: Before  the  year 2009, an  outbreak was counted when more than 2  people were\n\ninvolved. Since 2009, an outbreak is counted when more than 15 people are involved.\n\n\n\nSlovenia\n\nSource of data: The National Institute of Public Health of the Republic of Slovenia.\n\n\n\nSpain\n\nSource: Instituto de Salud Carlos III. Centro Nacional de Epidemiologia.www.isciii.es\n\nInfection or intoxication due to microbiologically contaminated food (Salmonellas, Estafilococo,  C.\n\nperfringens, Shigella sonnei, C.Botulinum, Other  and Unknown). Contaminated water as  common origin\n\nis excluded.\n\n\n\nSweden\n\nReported:20-40 outbreaks/year.  An  outbreak  is  counted when    more than 2  persons are involved.\n\nException for C.botulinum more than 1 person is enough. \n\nSource: National Food administration.\n\nThe National Food Agency is the central administrative authority for matters concerning food.\n\nhttp://www.slv.se/sv/grupp3/Rapporter/Matforgiftning-hantering-av-mat/\n\nhttp://www.slv.se/upload/dokument/rapporter/matforgiftning_mathantering/Matf%c3%b6rgiftningar%20intr\n\n%c3%a4ffade%202013%20nationell%20rapport%20%20%20-%201400905%20g.pdf\n\n\n\nSwitzerland\n\nSource of data:  Coverage:\n\nDeviation from the definition:\n\nEstimation method:\n\nBreak in time series:\n\n\n\nTFYR Macedonia\n\nSource: Registration form for communicable diseases;  Institute for Public Health (IPH)\n\n\n\nTurkey\n\nSource of data: Public Health Institution of Turkey, Ministry of Health of Turkey.\n\nMethod: Includes  the  number  of  outbreaks occurring  from microbiological foodborne diseases in a\n\nyear.\n\nIn  2012 figure  is higher than for  previous years presumably because of a change  in the reporting\n\nsystem and Syrian refugees.\n\n\n\nTurkmenistan\n\nCriteria for   an  outbreak  -  20 or more microbiological  foodborn poisonings from the same source\n\nduring certain time period.\n\n\n\nUnited Kingdom\n\nData are not available.\n\n\n\nUzbekistan\n\nAn outbreak includes at least 15 cases.\n\n\n\n</code></pre>
+<span class="kw">cat</span>(<span class="kw">getDefinitions</span>(<span class="st">&quot;4010&quot;</span>)$Title)</code></pre></div>
+<pre><code>#&gt; Microbiological foodborne diseases, number of outbreaks
+#&gt; Indicator code: E220200.T
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Infections   or  intoxications   due  to  microbiologically   contaminated   food   (trichinellosis,
+#&gt; 
+#&gt; salmonellosis,  campylobacter infections  etc.). An outbreak  is the exposure of a group of  persons
+#&gt; 
+#&gt; with the contaminated   food as  the common origin. It is understood that  national definitions  and
+#&gt; 
+#&gt; registration practices  vary significantly. In some countries, an outbreak is counted when more than
+#&gt; 
+#&gt; 15 cases are involved.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Armenia
+#&gt; 
+#&gt; Source of data: National Health Information Analytic  Center, Ministry of Health of the  Republic of
+#&gt; 
+#&gt; Armenia http://moh.am/?section=static_pages/index&amp;id=625&amp;subID=824,29. 
+#&gt; 
+#&gt; Data collected annually, reference period: 31 December.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Austria
+#&gt; 
+#&gt; Data are not available.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Belgium
+#&gt; 
+#&gt; Source: Federal Public Service of  Public  Health, Food  Chain  Safety  and Environment,  Scientific
+#&gt; 
+#&gt; Institute of Public Health.
+#&gt; 
+#&gt; The  number of reported outbreaks more than doubled in 2011  as compared  to  previous years,  which
+#&gt; 
+#&gt; might be due to  an  adapted   outbreak investigation procedure   at the  FASFC   and/or   increased
+#&gt; 
+#&gt; sensibility  by   consumers,   especially  after the  death  of  an adolescent in  a French fastfood
+#&gt; 
+#&gt; restaurant   and    the    German   E.     coli    O104:H4   outbreak     involving    many   deaths
+#&gt; 
+#&gt; (http://www.favv.be/publicationsthematiques/Report-zoonotic-agents-Belgium.asp).
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Bosnia and Herzegovina
+#&gt; 
+#&gt; Public Health Institute - Department of Epidemiology.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Cyprus
+#&gt; 
+#&gt; No data are available
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Czech Republic
+#&gt; 
+#&gt; Source: Ministry of Health of CR.
+#&gt; 
+#&gt; Reduction in year 2012  caused by the reduction in  number of salmonella outbreaks due to successful
+#&gt; 
+#&gt; implementation of veterinary programmes for infection control in poultry.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Denmark
+#&gt; 
+#&gt; Source: Annual Report on Zoonoses in Denmark, by DTU FOOD, National Food Institute.
+#&gt; 
+#&gt; http://www.food.dtu.dk/Publikationer/Foedevaresikkerhed/Annual_report_on_zoonoses
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Estonia
+#&gt; 
+#&gt; Source: Health Protection Inspectorate till 2009. Since 2010 National Health Board.
+#&gt; 
+#&gt; The registration of outbreaks generally includes more than 10 cases.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Finland
+#&gt; 
+#&gt; Source: Finnish Food Safety Authority (Evira).
+#&gt; 
+#&gt; Description of the types of outbreaks covered by the reporting:
+#&gt; 
+#&gt; All  general domestic  food- and waterborne outbreaks are reported  in Finland. Illness of more than
+#&gt; 
+#&gt; two persons  from  single  source is considered a cluster and a  suspected outbreak. Sporadic  cases
+#&gt; 
+#&gt; (except  for     botulism)  and infections acquired abroad  are not  included in  the food poisoning
+#&gt; 
+#&gt; register, whereas they are    included    in the   infectious disease register. Family outbreaks are
+#&gt; 
+#&gt; reported if commercial foodstuffs are supposed to be  a source of  illness or several persons are at
+#&gt; 
+#&gt; risk. Obligatory  reporting involves definite communicable diseases and traditional foodborne agents
+#&gt; 
+#&gt; such as those causing intoxications.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; France
+#&gt; 
+#&gt; Source of data: Institute de veille sanitaire (French Institute for public health surveillance)
+#&gt; 
+#&gt; http://www.invs.sante.fr/Dossiers-thematiques/Maladies-infectieuses/Maladies-a-declaration-obligatoi
+#&gt; 
+#&gt; re/Toxi-infections-alimentaires-collectives
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Georgia
+#&gt; 
+#&gt; Source:   National    Centre  for  Disease   Control  and    Public    Health  of  Georgia    (NCDC)
+#&gt; 
+#&gt; (http://www.ncdc.ge).
+#&gt; 
+#&gt; The  increase in number of outbreaks since   year 2010 has  been due to  the change of the reporting
+#&gt; 
+#&gt; format in 2009.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Germany
+#&gt; 
+#&gt; Source: Robert Koch-Institute, Infectious  Disease Surveillance Report, Chapter 5, table 5.2.1 (data
+#&gt; 
+#&gt; as of March 1, 2014).
+#&gt; 
+#&gt; http://www.rki.de
+#&gt; 
+#&gt; Coverage: Data on  outbreaks are  collected  by  the Robert Koch-Institute in  compliance  with  the
+#&gt; 
+#&gt; Infectious Disease Control Act. According  to §6 Infectious Disease Control Act in Germany cases are
+#&gt; 
+#&gt; notifiable  if two or more persons have the same disease (e.g. food   poisoning) and it is  supposed
+#&gt; 
+#&gt; that these diseases have the (probably) common origin.
+#&gt; 
+#&gt; The  reported figures  are potential foodborne outbreaks (2 and more cases). This means,  because of
+#&gt; 
+#&gt; the germ  an infection or intoxication due to microbiologically  contaminated food is  assumed.  The
+#&gt; 
+#&gt; notifiable  germs that could be transmitted through  food are: Clostridium botulinum, Brucella spp.,
+#&gt; 
+#&gt; Campylobacter spp., Cryptosporidium  parvum, Escherichia coli,  enterohemorrhagic  Escherichia  coli
+#&gt; 
+#&gt; (EHEC), Francisella tularensis, Giardia lamblia, Hepatitis-A and Hepatits-B, Listeria monocytogenes,
+#&gt; 
+#&gt; Salmonella enterica Serovar  Paratyphi   A-C,  Salmonella  enterica Serovar Typhi,  Salmonella spp.,
+#&gt; 
+#&gt; Shigella spp., Trichinella spiralis, Yersinia enterocolitica and Vibrio cholera.
+#&gt; 
+#&gt; Due to often transmissions from person to person outbreaks on Norwalk-like virus are excluded.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Iceland
+#&gt; 
+#&gt; Source:  Until  2001:  Environment  &amp;  Food Agency (formerly The National Centre for Hygiene,   Food
+#&gt; 
+#&gt; Control and Environmental Protection).
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Ireland
+#&gt; 
+#&gt; Source:  Health Protection Surveillance  Centre.  Relates to the number of outbreaks reported to the
+#&gt; 
+#&gt; HPSC where food was suspected to have contributed to transmission.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Israel
+#&gt; 
+#&gt; Source: Department of Epidemiology, Ministry of Health.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Latvia
+#&gt; 
+#&gt; Data are not available.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Lithuania
+#&gt; 
+#&gt; Source: Centre for Communicable Diseases Control and AIDS.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Luxembourg
+#&gt; 
+#&gt; Data are not available.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Malta
+#&gt; 
+#&gt; An outbreak is counted when you have 2 or more cases involved. 
+#&gt; 
+#&gt; Source:  Infectious  Disease Prevention &amp;  Control Unit,Health   Promotion  and Disease   Prevention
+#&gt; 
+#&gt; Directorate (reviewed the data of 2007-2012. Only confirmed cases are now included. As for outbreaks
+#&gt; 
+#&gt; only   confirmed outbreaks of foodborne illness are included. This has resulted in some increase  in
+#&gt; 
+#&gt; the numbers of  total confirmed  cases and  a reduction in the numbers of outbreaks in  5 out of six
+#&gt; 
+#&gt; years.)
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Montenegro
+#&gt; 
+#&gt; Outbreak is counted even if there are only a  few cases in  one place  at the same time, e.g. in one
+#&gt; 
+#&gt; family.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Netherlands
+#&gt; 
+#&gt; Source: NN=National Notification to Inspectorate for Health  Care (RIVM). Until 2008, the data refer
+#&gt; 
+#&gt; to the statutory  notifications. From 2009  onwards,  data cover also  and are integrated  with  the
+#&gt; 
+#&gt; registration of the Food and Goods Authority
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Norway
+#&gt; 
+#&gt; Data are not available.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Poland
+#&gt; 
+#&gt; Source of data: National Institute of Public Health - National Institute of Hygiene.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Republic of Moldova
+#&gt; 
+#&gt; All acute  intestinal diseases (salmonellosis,  dysentery,  yersiniosis,  rotavirus gastroenteritis,
+#&gt; 
+#&gt; enteritis caused by  opportunistic enterobacteria, etiologically   nerasshifrovanye acute intestinal
+#&gt; 
+#&gt; diseases, etc.) transmitted by microbiologically contaminated food are included into the data. 
+#&gt; 
+#&gt; In the republic of Moldova, the term intestinal disease outbreak is used when 5 and more cases are
+#&gt; 
+#&gt; registered (in the hospital - two or more cases).
+#&gt; 
+#&gt; According to  the  documents of  the Ministry  of  Health of the Republic of Moldova, cases of  food
+#&gt; 
+#&gt; poisoning are reported to the Ministry of Health and the National Center of Public  Health within 24
+#&gt; 
+#&gt; hours from the time of detection. The procedure of collecting and transmitting data is as follows:
+#&gt; 
+#&gt; A medical professional of any  medical institution submits an emergency notification (Form N58/e) to
+#&gt; 
+#&gt; the Regional  Public Health  Center (for  each patient suspected  of the  disease  or with a primary
+#&gt; 
+#&gt; diagnosis of an acute intestinal disease including   food intoxication). Based on these submissions,
+#&gt; 
+#&gt; an epidemiological study is conducted to establish the fact of a disease outbreak.   
+#&gt; 
+#&gt; Regional Centres of Public Health, in turn, inform the Ministry of Health and the National Center of
+#&gt; 
+#&gt; Public  Health within 24  hours from  the  time  of  detection and registration  of acute intestinal
+#&gt; 
+#&gt; diseases and food poisoning with 5 or more victims (in the hospital - with 2 or more victims). 
+#&gt; 
+#&gt; Source of data:  After  the completion of epidemiological studies  (see above), Regional  Centres of
+#&gt; 
+#&gt; Public  Health send final  reports of  the  outbreak investigation to  the National Center of Public
+#&gt; 
+#&gt; Health. These reports are analysed and used as an official  source of  information  about intestinal
+#&gt; 
+#&gt; disease outbreaks at both national and international levels. 
+#&gt; 
+#&gt; In  order   to obtain timely   information, investigation and  registration   of intestinal  disease
+#&gt; 
+#&gt; outbreaks the  guidelines &quot;On information,  investigation  and registration of  outbreaks caused  by
+#&gt; 
+#&gt; food&quot; have been developed and approved   by Resolution  of the  Chief  State  Sanitary Doctor of the
+#&gt; 
+#&gt; Republic of Moldova ? 2 of 26.01.2006, which include the following definitions:
+#&gt; 
+#&gt; Disease caused  by food is  a disease of an infectious and  toxic  origin, caused or  supposed to be
+#&gt; 
+#&gt; caused by consumption of food;
+#&gt; 
+#&gt; Food poisoning is an acute disease caused   by food appearing usually acute and in a short period of
+#&gt; 
+#&gt; time in two  or more persons  who used the  same food, and is manifest itself as disorders   of  the
+#&gt; 
+#&gt; gastrointestinal tract,   particularly nausea, vomiting,  fever  and / or   diarrhoea, and    rarely
+#&gt; 
+#&gt; neurological and muscular symptoms;
+#&gt; 
+#&gt; Outbreak of a disease caused by food is when two or more people suffer from the same symptoms of the
+#&gt; 
+#&gt; disease after eating the same product, and epidemiological data indicate a food product which caused
+#&gt; 
+#&gt; of the disease.
+#&gt; 
+#&gt; Outbreak  in the household is  an outbreak affecting 2 or more people from the  same family  or from
+#&gt; 
+#&gt; different families who consumed  the  same food within  the household.  Indicating an outbreak  that
+#&gt; 
+#&gt; involves 2 or more people  is related to   the need for timely information and investigation of  the
+#&gt; 
+#&gt; source of the outbreak caused by food.
+#&gt; 
+#&gt; Currently, a  draft of the national guidelines for the investigation of intestinal disease outbreaks
+#&gt; 
+#&gt; is developed. 
+#&gt; 
+#&gt; Increase in the number of outbreaks and the number of cases of microbiological foodborne  disease is
+#&gt; 
+#&gt; due to the increase   in number of   outbreaks  in catering facilities  and  trade, in summer health
+#&gt; 
+#&gt; resorts and  kindergartens,  after the   transfer of the control over these objects  to the National
+#&gt; 
+#&gt; Agency for Food Safety in 2012.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Romania
+#&gt; 
+#&gt; Source: National Institute for Public Health.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Serbia
+#&gt; 
+#&gt; Source of data: Institute of Public Health  of Serbia.  An outbreak  is counted when 2 or more cases
+#&gt; 
+#&gt; are  involved. Most outbreaks are  small  &quot;family (household)  outbreak&quot; (3-5 cases) associated with
+#&gt; 
+#&gt; consumption of eggs prepared without appropriate heat treatment.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Slovakia
+#&gt; 
+#&gt; Source:  Institute of Public Health, Banska Bystrica from 1990.
+#&gt; 
+#&gt; Break in time series: Before  the  year 2009, an  outbreak was counted when more than 2  people were
+#&gt; 
+#&gt; involved. Since 2009, an outbreak is counted when more than 15 people are involved.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Slovenia
+#&gt; 
+#&gt; Source of data: The National Institute of Public Health of the Republic of Slovenia.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Spain
+#&gt; 
+#&gt; Source: Instituto de Salud Carlos III. Centro Nacional de Epidemiologia.www.isciii.es
+#&gt; 
+#&gt; Infection or intoxication due to microbiologically contaminated food (Salmonellas, Estafilococo,  C.
+#&gt; 
+#&gt; perfringens, Shigella sonnei, C.Botulinum, Other  and Unknown). Contaminated water as  common origin
+#&gt; 
+#&gt; is excluded.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Sweden
+#&gt; 
+#&gt; Reported:20-40 outbreaks/year.  An  outbreak  is  counted when    more than 2  persons are involved.
+#&gt; 
+#&gt; Exception for C.botulinum more than 1 person is enough. 
+#&gt; 
+#&gt; Source: National Food administration.
+#&gt; 
+#&gt; The National Food Agency is the central administrative authority for matters concerning food.
+#&gt; 
+#&gt; http://www.slv.se/sv/grupp3/Rapporter/Matforgiftning-hantering-av-mat/
+#&gt; 
+#&gt; http://www.slv.se/upload/dokument/rapporter/matforgiftning_mathantering/Matf%c3%b6rgiftningar%20intr
+#&gt; 
+#&gt; %c3%a4ffade%202013%20nationell%20rapport%20%20%20-%201400905%20g.pdf
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Switzerland
+#&gt; 
+#&gt; Source of data:  Coverage:
+#&gt; 
+#&gt; Deviation from the definition:
+#&gt; 
+#&gt; Estimation method:
+#&gt; 
+#&gt; Break in time series:
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; TFYR Macedonia
+#&gt; 
+#&gt; Source: Registration form for communicable diseases;  Institute for Public Health (IPH)
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Turkey
+#&gt; 
+#&gt; Source of data: Public Health Institution of Turkey, Ministry of Health of Turkey.
+#&gt; 
+#&gt; Method: Includes  the  number  of  outbreaks occurring  from microbiological foodborne diseases in a
+#&gt; 
+#&gt; year.
+#&gt; 
+#&gt; In  2012 figure  is higher than for  previous years presumably because of a change  in the reporting
+#&gt; 
+#&gt; system and Syrian refugees.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Turkmenistan
+#&gt; 
+#&gt; Criteria for   an  outbreak  -  20 or more microbiological  foodborn poisonings from the same source
+#&gt; 
+#&gt; during certain time period.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; United Kingdom
+#&gt; 
+#&gt; Data are not available.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; Uzbekistan
+#&gt; 
+#&gt; An outbreak includes at least 15 cases.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## extract data for indicator '4010' and '4021' for Belgium
-## by not specifying 'year', we extract data for all years
+## .. by not specifying 'year', we extract data for all years
 <span class="kw">getData</span>(<span class="kw">c</span>(<span class="st">&quot;4010&quot;</span>, <span class="st">&quot;4021&quot;</span>), <span class="dt">country =</span> <span class="st">&quot;BEL&quot;</span>)</code></pre></div>
-<pre><code>##      Yr IndID RegID CntrID  val
-## 1  1996  4010   EUR    BEL   75
-## 2  1997  4010   EUR    BEL   66
-## 3  1998  4010   EUR    BEL   73
-## 4  1999  4010   EUR    BEL   98
-## 5  2000  4010   EUR    BEL   63
-## 6  2001  4010   EUR    BEL   56
-## 7  2002  4010   EUR    BEL   60
-## 8  2003  4010   EUR    BEL  101
-## 9  2004  4010   EUR    BEL   56
-## 10 2005  4010   EUR    BEL  105
-## 11 2006  4010   EUR    BEL  116
-## 12 2007  4010   EUR    BEL   75
-## 13 2008  4010   EUR    BEL  104
-## 14 2009  4010   EUR    BEL  105
-## 15 2010  4010   EUR    BEL  106
-## 16 2011  4010   EUR    BEL  281
-## 17 2012  4010   EUR    BEL  330
-## 18 2013  4010   EUR    BEL  311
-## 19 1996  4021   EUR    BEL  601
-## 20 1997  4021   EUR    BEL 1747
-## 21 1998  4021   EUR    BEL 1345
-## 22 1999  4021   EUR    BEL 2133
-## 23 2000  4021   EUR    BEL 1650
-## 24 2001  4021   EUR    BEL 2988
-## 25 2002  4021   EUR    BEL 1281
-## 26 2003  4021   EUR    BEL 1293
-## 27 2004  4021   EUR    BEL  531
-## 28 2005  4021   EUR    BEL  673
-## 29 2006  4021   EUR    BEL 1038
-## 30 2007  4021   EUR    BEL  846
-## 31 2008  4021   EUR    BEL  841
-## 32 2009  4021   EUR    BEL  912
-## 33 2010  4021   EUR    BEL 4211
-## 34 2011  4021   EUR    BEL 1539
-## 35 2012  4021   EUR    BEL 1378
-## 36 2013  4021   EUR    BEL 1312</code></pre>
+<pre><code>#&gt;      Yr IndID RegID CntrID  val
+#&gt; 1  1996  4010   EUR    BEL   75
+#&gt; 2  1997  4010   EUR    BEL   66
+#&gt; 3  1998  4010   EUR    BEL   73
+#&gt; 4  1999  4010   EUR    BEL   98
+#&gt; 5  2000  4010   EUR    BEL   63
+#&gt; 6  2001  4010   EUR    BEL   56
+#&gt; 7  2002  4010   EUR    BEL   60
+#&gt; 8  2003  4010   EUR    BEL  101
+#&gt; 9  2004  4010   EUR    BEL   56
+#&gt; 10 2005  4010   EUR    BEL  105
+#&gt; 11 2006  4010   EUR    BEL  116
+#&gt; 12 2007  4010   EUR    BEL   75
+#&gt; 13 2008  4010   EUR    BEL  104
+#&gt; 14 2009  4010   EUR    BEL  105
+#&gt; 15 2010  4010   EUR    BEL  106
+#&gt; 16 2011  4010   EUR    BEL  281
+#&gt; 17 2012  4010   EUR    BEL  330
+#&gt; 18 2013  4010   EUR    BEL  311
+#&gt; 19 1996  4021   EUR    BEL  601
+#&gt; 20 1997  4021   EUR    BEL 1747
+#&gt; 21 1998  4021   EUR    BEL 1345
+#&gt; 22 1999  4021   EUR    BEL 2133
+#&gt; 23 2000  4021   EUR    BEL 1650
+#&gt; 24 2001  4021   EUR    BEL 2988
+#&gt; 25 2002  4021   EUR    BEL 1281
+#&gt; 26 2003  4021   EUR    BEL 1293
+#&gt; 27 2004  4021   EUR    BEL  531
+#&gt; 28 2005  4021   EUR    BEL  673
+#&gt; 29 2006  4021   EUR    BEL 1038
+#&gt; 30 2007  4021   EUR    BEL  846
+#&gt; 31 2008  4021   EUR    BEL  841
+#&gt; 32 2009  4021   EUR    BEL  912
+#&gt; 33 2010  4021   EUR    BEL 4211
+#&gt; 34 2011  4021   EUR    BEL 1539
+#&gt; 35 2012  4021   EUR    BEL 1378
+#&gt; 36 2013  4021   EUR    BEL 1312</code></pre>
 </div>
 
 

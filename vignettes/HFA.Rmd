@@ -9,6 +9,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(comment = "#>")
+```
+
 ```{r, include = FALSE}
 library(HFA)
 ```
@@ -51,9 +55,9 @@ getIndicators(4)
 findIndicators("food")
 
 ## show definition of indicator '4010'
-getDefinitions("4010")
+cat(getDefinitions("4010")$Title)
 
 ## extract data for indicator '4010' and '4021' for Belgium
-## by not specifying 'year', we extract data for all years
+## .. by not specifying 'year', we extract data for all years
 getData(c("4010", "4021"), country = "BEL")
 ```
