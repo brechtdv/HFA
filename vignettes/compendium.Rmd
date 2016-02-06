@@ -1,0 +1,67 @@
+---
+title: "HFA compendium"
+author: "Brecht Devleesschauwer"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{HFA compendium}
+  %\VignetteEngine{rmarkdown::render}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(comment = "#>")
+```
+
+```{r, include = FALSE}
+library(HFA)
+library(knitr)
+library(printr)
+```
+
+## Available databases
+Database | URL
+-------- | ---
+WHO-EURO Health For All Database | http://sic.hi.lt/DPS/ws/dps_ws.php
+
+## WHO-EURO Health For All Database
+```{r}
+setHFADB("http://sic.hi.lt/DPS/ws/dps_ws.php")
+```
+
+### Available languages
+```{r, echo=FALSE}
+getLanguages()
+```
+
+### Available regions
+```{r, echo=FALSE}
+getRegions()
+```
+
+### Available countries
+```{r, echo=FALSE}
+getCountries("EUR")
+```
+
+### Available years
+```{r, echo=FALSE}
+getYears()
+```
+
+### Available indicator groups
+```{r, echo=FALSE}
+(g <- getIndicatorGroups())
+```
+
+### Available indicators
+```{r, echo=FALSE, results='asis'}
+for (i in seq(nrow(g))) {
+  cat("#### [", paste(g[i, ], collapse = "] "), sep = "")
+  cat("\n")
+  print(kable(getIndicators(g$Id[i])))
+  cat("\n")
+}
+```
