@@ -1,3 +1,6 @@
 ^\.travis\.yml$
 ^README\.md$
-.Rprofile
+
+# produced vignettes
+vignettes/*\.html
+vignettes/*\.pdf

@@ -1,0 +1,3779 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Brecht Devleesschauwer" />
+
+<meta name="date" content="2016-02-05" />
+
+<title>HFA compendium</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0A%7D%0Apre%20%7B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div id="header">
+<h1 class="title">HFA compendium</h1>
+<h4 class="author"><em>Brecht Devleesschauwer</em></h4>
+<h4 class="date"><em>2016-02-05</em></h4>
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#available-databases">Available databases</a></li>
+<li><a href="#who-euro-health-for-all-database">WHO-EURO Health For All Database</a><ul>
+<li><a href="#available-languages">Available languages</a></li>
+<li><a href="#available-regions">Available regions</a></li>
+<li><a href="#available-countries">Available countries</a></li>
+<li><a href="#available-years">Available years</a></li>
+<li><a href="#available-indicator-groups">Available indicator groups</a></li>
+<li><a href="#available-indicators">Available indicators</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="available-databases" class="section level2">
+<h2>Available databases</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Database</th>
+<th align="left">URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">WHO-EURO Health For All Database</td>
+<td align="left"><a href="http://sic.hi.lt/DPS/ws/dps_ws.php" class="uri">http://sic.hi.lt/DPS/ws/dps_ws.php</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="who-euro-health-for-all-database" class="section level2">
+<h2>WHO-EURO Health For All Database</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setHFADB</span>(<span class="st">&quot;http://sic.hi.lt/DPS/ws/dps_ws.php&quot;</span>)</code></pre></div>
+<pre><code>#&gt; [1] &quot;Health for all database, November 2015 version&quot;</code></pre>
+<div id="available-languages" class="section level3">
+<h3>Available languages</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Id</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">en</td>
+<td align="left">English</td>
+</tr>
+<tr class="even">
+<td align="left">ru</td>
+<td align="left"><U+0420><U+0443><U+0441><U+0441><U+043A><U+0438><U+0439></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="available-regions" class="section level3">
+<h3>Available regions</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">RegID</th>
+<th align="left">RegPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">NA</td>
+<td align="left">EUROPE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="available-countries" class="section level3">
+<h3>Available countries</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">RegID</th>
+<th align="left">CntrID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">ALB</td>
+<td align="left">Albania</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">AND</td>
+<td align="left">Andorra</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">ARM</td>
+<td align="left">Armenia</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">AUT</td>
+<td align="left">Austria</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">AZE</td>
+<td align="left">Azerbaijan</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">BLR</td>
+<td align="left">Belarus</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">BEL</td>
+<td align="left">Belgium</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">BIH</td>
+<td align="left">Bosnia and Herzegovina</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">BUL</td>
+<td align="left">Bulgaria</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">CRO</td>
+<td align="left">Croatia</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">CYP</td>
+<td align="left">Cyprus</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">CZH</td>
+<td align="left">Czech Republic</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">DEN</td>
+<td align="left">Denmark</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">EST</td>
+<td align="left">Estonia</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">FIN</td>
+<td align="left">Finland</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">FRA</td>
+<td align="left">France</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">GEO</td>
+<td align="left">Georgia</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">DEU</td>
+<td align="left">Germany</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">GRE</td>
+<td align="left">Greece</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">HUN</td>
+<td align="left">Hungary</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">ICE</td>
+<td align="left">Iceland</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">IRE</td>
+<td align="left">Ireland</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">ISR</td>
+<td align="left">Israel</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">ITA</td>
+<td align="left">Italy</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">KAZ</td>
+<td align="left">Kazakhstan</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">KGZ</td>
+<td align="left">Kyrgyzstan</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">LVA</td>
+<td align="left">Latvia</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">LTU</td>
+<td align="left">Lithuania</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">LUX</td>
+<td align="left">Luxembourg</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">MAT</td>
+<td align="left">Malta</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">MON</td>
+<td align="left">Monaco</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">MNE</td>
+<td align="left">Montenegro</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">NET</td>
+<td align="left">Netherlands</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">NOR</td>
+<td align="left">Norway</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">POL</td>
+<td align="left">Poland</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">POR</td>
+<td align="left">Portugal</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">MDA</td>
+<td align="left">Republic of Moldova</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">ROM</td>
+<td align="left">Romania</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">RUS</td>
+<td align="left">Russian Federation</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">SMR</td>
+<td align="left">San Marino</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">SRB</td>
+<td align="left">Serbia</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">SVK</td>
+<td align="left">Slovakia</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">SVN</td>
+<td align="left">Slovenia</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">SPA</td>
+<td align="left">Spain</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">SWE</td>
+<td align="left">Sweden</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">SWI</td>
+<td align="left">Switzerland</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">TJK</td>
+<td align="left">Tajikistan</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">MKD</td>
+<td align="left">MKD*</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">TUR</td>
+<td align="left">Turkey</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">TKM</td>
+<td align="left">Turkmenistan</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">UKR</td>
+<td align="left">Ukraine</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">UNK</td>
+<td align="left">United Kingdom</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">UZB</td>
+<td align="left">Uzbekistan</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">EUR</td>
+<td align="left">European Region</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">EU</td>
+<td align="left">EU</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">EU15</td>
+<td align="left">EU members before May 2004</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">EU13</td>
+<td align="left">EU members since May 2004</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">CIS</td>
+<td align="left">CIS</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">CAR</td>
+<td align="left">CARINFONET members</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">Eur-A</td>
+<td align="left">Eur-A</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">Eur-B+C</td>
+<td align="left">Eur-B+C</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">SEEHN</td>
+<td align="left">SEEHN members</td>
+</tr>
+<tr class="odd">
+<td align="left">EUR</td>
+<td align="left">NOC</td>
+<td align="left">Nordic countries</td>
+</tr>
+<tr class="even">
+<td align="left">EUR</td>
+<td align="left">SMC</td>
+<td align="left">Small countries</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="available-years" class="section level3">
+<h3>Available years</h3>
+<pre><code>#&gt;  [1] 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002
+#&gt; [15] 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988
+#&gt; [29] 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974
+#&gt; [43] 1973 1972 1971 1970</code></pre>
+</div>
+<div id="available-indicator-groups" class="section level3">
+<h3>Available indicator groups</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Id</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">DEMOGRAPHIC AND SOCIO-ECONOMIC INDICATORS</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">MORTALITY-BASED INDICATORS</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">MORBIDITY, DISABILITY AND HOSPITAL DISCHARGES</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">LIFE STYLES</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">ENVIRONMENT</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">HEALTH CARE RESOURCES</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">HEALTH CARE UTILIZATION AND EXPENDITURE</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">MATERNAL AND CHILD HEALTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="available-indicators" class="section level3">
+<h3>Available indicators</h3>
+<div id="demographic-and-socio-economic-indicators" class="section level4">
+<h4>[1] DEMOGRAPHIC AND SOCIO-ECONOMIC INDICATORS</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0010</td>
+<td align="left">NA</td>
+<td align="left">Mid-year population</td>
+</tr>
+<tr class="even">
+<td align="left">0011</td>
+<td align="left">0010</td>
+<td align="left">Mid-year male population</td>
+</tr>
+<tr class="odd">
+<td align="left">0012</td>
+<td align="left">0010</td>
+<td align="left">Mid-year female population</td>
+</tr>
+<tr class="even">
+<td align="left">0020</td>
+<td align="left">NA</td>
+<td align="left">% of population aged 014 years</td>
+</tr>
+<tr class="odd">
+<td align="left">0021</td>
+<td align="left">0020</td>
+<td align="left">% of population aged 014 years, males</td>
+</tr>
+<tr class="even">
+<td align="left">0022</td>
+<td align="left">0020</td>
+<td align="left">% of population aged 014 years, females</td>
+</tr>
+<tr class="odd">
+<td align="left">0030</td>
+<td align="left">NA</td>
+<td align="left">% of population aged 65+ years</td>
+</tr>
+<tr class="even">
+<td align="left">0031</td>
+<td align="left">0030</td>
+<td align="left">% of population aged 65+ years, males</td>
+</tr>
+<tr class="odd">
+<td align="left">0032</td>
+<td align="left">0030</td>
+<td align="left">% of population aged 65+ years, females</td>
+</tr>
+<tr class="even">
+<td align="left">0060</td>
+<td align="left">NA</td>
+<td align="left">Live births per 1000 population</td>
+</tr>
+<tr class="odd">
+<td align="left">0061</td>
+<td align="left">0060</td>
+<td align="left">Live births per 1000 population, males</td>
+</tr>
+<tr class="even">
+<td align="left">0062</td>
+<td align="left">0060</td>
+<td align="left">Live births per 1000 population, females</td>
+</tr>
+<tr class="odd">
+<td align="left">0063</td>
+<td align="left">0060</td>
+<td align="left">Number of live births</td>
+</tr>
+<tr class="even">
+<td align="left">0064</td>
+<td align="left">0060</td>
+<td align="left">Number of live births, males</td>
+</tr>
+<tr class="odd">
+<td align="left">0065</td>
+<td align="left">0060</td>
+<td align="left">Number of live births, females</td>
+</tr>
+<tr class="even">
+<td align="left">0070</td>
+<td align="left">NA</td>
+<td align="left">Crude death rate per 1000 population</td>
+</tr>
+<tr class="odd">
+<td align="left">0071</td>
+<td align="left">0070</td>
+<td align="left">Crude death rate per 1000 population, males</td>
+</tr>
+<tr class="even">
+<td align="left">0072</td>
+<td align="left">0070</td>
+<td align="left">Crude death rate per 1000 population, females</td>
+</tr>
+<tr class="odd">
+<td align="left">0080</td>
+<td align="left">NA</td>
+<td align="left">Total fertility rate</td>
+</tr>
+<tr class="even">
+<td align="left">0150</td>
+<td align="left">NA</td>
+<td align="left">% of urban population</td>
+</tr>
+<tr class="odd">
+<td align="left">0160</td>
+<td align="left">NA</td>
+<td align="left">Average population density per km2</td>
+</tr>
+<tr class="even">
+<td align="left">0161</td>
+<td align="left">0160</td>
+<td align="left">Area (km2)</td>
+</tr>
+<tr class="odd">
+<td align="left">0200</td>
+<td align="left">NA</td>
+<td align="left">Unemployment rate (%)</td>
+</tr>
+<tr class="even">
+<td align="left">0210</td>
+<td align="left">NA</td>
+<td align="left">Labour force as % of population</td>
+</tr>
+<tr class="odd">
+<td align="left">0220</td>
+<td align="left">NA</td>
+<td align="left">Annual average rate of inflation (%)</td>
+</tr>
+<tr class="even">
+<td align="left">0250</td>
+<td align="left">NA</td>
+<td align="left">Gross national income, US$ per capita</td>
+</tr>
+<tr class="odd">
+<td align="left">0260</td>
+<td align="left">NA</td>
+<td align="left">Gross domestic product (GDP), US$ per capita</td>
+</tr>
+<tr class="even">
+<td align="left">0270</td>
+<td align="left">NA</td>
+<td align="left">Real gross domestic product, PPP$ per capita</td>
+</tr>
+<tr class="odd">
+<td align="left">0280</td>
+<td align="left">NA</td>
+<td align="left">GINI coefficient (income distribution)</td>
+</tr>
+<tr class="even">
+<td align="left">0300</td>
+<td align="left">NA</td>
+<td align="left">Total government expenditure as % of GDP</td>
+</tr>
+<tr class="odd">
+<td align="left">0400</td>
+<td align="left">NA</td>
+<td align="left">Literacy rate (%) in population aged 15+ years</td>
+</tr>
+<tr class="even">
+<td align="left">0401</td>
+<td align="left">0400</td>
+<td align="left">Literacy rate (%) in male population aged 15+ years</td>
+</tr>
+<tr class="odd">
+<td align="left">0402</td>
+<td align="left">0400</td>
+<td align="left">Literacy rate (%) in female population aged 15+ years</td>
+</tr>
+<tr class="even">
+<td align="left">0410</td>
+<td align="left">NA</td>
+<td align="left">% of population with postsecondary education aged 25+ years</td>
+</tr>
+<tr class="odd">
+<td align="left">0411</td>
+<td align="left">0410</td>
+<td align="left">% of population with primary education only aged 25+ years</td>
+</tr>
+<tr class="even">
+<td align="left">0412</td>
+<td align="left">0410</td>
+<td align="left">% of population with secondary education only aged 25+ years</td>
+</tr>
+<tr class="odd">
+<td align="left">0420</td>
+<td align="left">NA</td>
+<td align="left">Proportion of children of official primary school age not enrolled, both sexes</td>
+</tr>
+<tr class="even">
+<td align="left">0421</td>
+<td align="left">0420</td>
+<td align="left">Proportion of children of official primary school age not enrolled, males</td>
+</tr>
+<tr class="odd">
+<td align="left">0422</td>
+<td align="left">0420</td>
+<td align="left">Proportion of children of official primary school age not enrolled, females</td>
+</tr>
+<tr class="even">
+<td align="left">0500</td>
+<td align="left">NA</td>
+<td align="left">UNDP Human Development Index (HDI)</td>
+</tr>
+<tr class="odd">
+<td align="left">0600</td>
+<td align="left">NA</td>
+<td align="left">Availability of social support</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="mortality-based-indicators" class="section level4">
+<h4>[2] MORTALITY-BASED INDICATORS</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1010</td>
+<td align="left">NA</td>
+<td align="left">Life expectancy at birth (years)</td>
+</tr>
+<tr class="even">
+<td align="left">1011</td>
+<td align="left">1010</td>
+<td align="left">Life expectancy at birth (years), males</td>
+</tr>
+<tr class="odd">
+<td align="left">1012</td>
+<td align="left">1010</td>
+<td align="left">Life expectancy at birth (years), females</td>
+</tr>
+<tr class="even">
+<td align="left">1020</td>
+<td align="left">NA</td>
+<td align="left">Life expectancy at age 1 (years)</td>
+</tr>
+<tr class="odd">
+<td align="left">1021</td>
+<td align="left">1020</td>
+<td align="left">Life expectancy at age 1 (years), males</td>
+</tr>
+<tr class="even">
+<td align="left">1022</td>
+<td align="left">1020</td>
+<td align="left">Life expectancy at age 1 (years), females</td>
+</tr>
+<tr class="odd">
+<td align="left">1030</td>
+<td align="left">NA</td>
+<td align="left">Life expectancy at age 15 (years)</td>
+</tr>
+<tr class="even">
+<td align="left">1031</td>
+<td align="left">1030</td>
+<td align="left">Life expectancy at age 15 (years), males</td>
+</tr>
+<tr class="odd">
+<td align="left">1032</td>
+<td align="left">1030</td>
+<td align="left">Life expectancy at age 15 (years), females</td>
+</tr>
+<tr class="even">
+<td align="left">1040</td>
+<td align="left">NA</td>
+<td align="left">Life expectancy at age 45 (years)</td>
+</tr>
+<tr class="odd">
+<td align="left">1041</td>
+<td align="left">1040</td>
+<td align="left">Life expectancy at age 45 (years), males</td>
+</tr>
+<tr class="even">
+<td align="left">1042</td>
+<td align="left">1040</td>
+<td align="left">Life expectancy at age 45 (years), females</td>
+</tr>
+<tr class="odd">
+<td align="left">1050</td>
+<td align="left">NA</td>
+<td align="left">Life expectancy at age 65 (years)</td>
+</tr>
+<tr class="even">
+<td align="left">1051</td>
+<td align="left">1050</td>
+<td align="left">Life expectancy at age 65 (years), males</td>
+</tr>
+<tr class="odd">
+<td align="left">1052</td>
+<td align="left">1050</td>
+<td align="left">Life expectancy at age 65 (years), females</td>
+</tr>
+<tr class="even">
+<td align="left">1060</td>
+<td align="left">NA</td>
+<td align="left">Reduction of life expectancy through death before 65 years</td>
+</tr>
+<tr class="odd">
+<td align="left">1061</td>
+<td align="left">1060</td>
+<td align="left">Reduction of life expectancy through death before 65 years, males</td>
+</tr>
+<tr class="even">
+<td align="left">1062</td>
+<td align="left">1060</td>
+<td align="left">Reduction of life expectancy through death before 65 years, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1070</td>
+<td align="left">NA</td>
+<td align="left">Probability of dying before age 5 per 1000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">1071</td>
+<td align="left">1070</td>
+<td align="left">Probability of dying before age 5 per 1000 live births, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1072</td>
+<td align="left">1070</td>
+<td align="left">Probability of dying before age 5 per 1000 live births, females</td>
+</tr>
+<tr class="even">
+<td align="left">1073</td>
+<td align="left">1070</td>
+<td align="left">Estimated probability of dying before age 5, per 1000 live births (world health report)</td>
+</tr>
+<tr class="odd">
+<td align="left">1074</td>
+<td align="left">1070</td>
+<td align="left">Estimated probability of dying before age 5, per 1000 live births (world health report), males</td>
+</tr>
+<tr class="even">
+<td align="left">1075</td>
+<td align="left">1070</td>
+<td align="left">Estimated probability of dying before age 5, per 1000 live births (world health report), females</td>
+</tr>
+<tr class="odd">
+<td align="left">1080</td>
+<td align="left">NA</td>
+<td align="left">Disability-adjusted life expectancy (world health report)</td>
+</tr>
+<tr class="even">
+<td align="left">1081</td>
+<td align="left">1080</td>
+<td align="left">Disability-adjusted life expectancy (world health report), males</td>
+</tr>
+<tr class="odd">
+<td align="left">1082</td>
+<td align="left">1080</td>
+<td align="left">Disability-adjusted life expectancy (world health report), females</td>
+</tr>
+<tr class="even">
+<td align="left">1090</td>
+<td align="left">NA</td>
+<td align="left">Estimated life expectancy (world health report)</td>
+</tr>
+<tr class="odd">
+<td align="left">1091</td>
+<td align="left">1090</td>
+<td align="left">Estimated life expectancy (world health report), males</td>
+</tr>
+<tr class="even">
+<td align="left">1092</td>
+<td align="left">1090</td>
+<td align="left">Estimated life expectancy (world health report), females</td>
+</tr>
+<tr class="odd">
+<td align="left">1100</td>
+<td align="left">NA</td>
+<td align="left">Estimated infant mortality per 1000 live births (world health report)</td>
+</tr>
+<tr class="even">
+<td align="left">1110</td>
+<td align="left">NA</td>
+<td align="left">Infant deaths per 1000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">1111</td>
+<td align="left">1110</td>
+<td align="left">Infant deaths per 1000 live births, males</td>
+</tr>
+<tr class="even">
+<td align="left">1112</td>
+<td align="left">1110</td>
+<td align="left">Infant deaths per 1000 live births, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1120</td>
+<td align="left">NA</td>
+<td align="left">Neonatal deaths per 1000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">1130</td>
+<td align="left">NA</td>
+<td align="left">Early neonatal deaths per 1000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">1131</td>
+<td align="left">1130</td>
+<td align="left">Number of early neonatal deaths</td>
+</tr>
+<tr class="even">
+<td align="left">1140</td>
+<td align="left">NA</td>
+<td align="left">Late neonatal deaths per 1000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">1150</td>
+<td align="left">NA</td>
+<td align="left">Postneonatal deaths per 1000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">1160</td>
+<td align="left">NA</td>
+<td align="left">Fetal deaths per 1000 births</td>
+</tr>
+<tr class="odd">
+<td align="left">1161</td>
+<td align="left">1160</td>
+<td align="left">Number of dead-born fetuses</td>
+</tr>
+<tr class="even">
+<td align="left">1170</td>
+<td align="left">NA</td>
+<td align="left">Perinatal deaths per 1000 births</td>
+</tr>
+<tr class="odd">
+<td align="left">1171</td>
+<td align="left">1170</td>
+<td align="left">Number of deadborn fetuses with a birth weight of 1000 g or more</td>
+</tr>
+<tr class="even">
+<td align="left">1172</td>
+<td align="left">1170</td>
+<td align="left">Number of early neonatal deaths with a birth weight of 1000 g or more</td>
+</tr>
+<tr class="odd">
+<td align="left">1173</td>
+<td align="left">1170</td>
+<td align="left">Number of live births with a birth weight of 1000 g or more</td>
+</tr>
+<tr class="even">
+<td align="left">1174</td>
+<td align="left">1170</td>
+<td align="left">Perinatal deaths national criteria per 1000 births</td>
+</tr>
+<tr class="odd">
+<td align="left">1175</td>
+<td align="left">1170</td>
+<td align="left">Perinatal deaths 1000+g per 1000 births</td>
+</tr>
+<tr class="even">
+<td align="left">1210</td>
+<td align="left">NA</td>
+<td align="left">Maternal deaths per 100 000, max of cod and clinical data</td>
+</tr>
+<tr class="odd">
+<td align="left">1211</td>
+<td align="left">1210</td>
+<td align="left">Maternal deaths, abortion, per 100 000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">1212</td>
+<td align="left">1210</td>
+<td align="left">Maternal deaths, haemorrhage, per 100 000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">1213</td>
+<td align="left">1210</td>
+<td align="left">Maternal deaths, gestational (pregnancy-induced) hypertension and hyperemesis, per 100 000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">1214</td>
+<td align="left">1210</td>
+<td align="left">Maternal deaths, puerperium, per 100 000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">1215</td>
+<td align="left">1210</td>
+<td align="left">Maternal deaths per 100 000 live births according to clinical data</td>
+</tr>
+<tr class="even">
+<td align="left">1216</td>
+<td align="left">1210</td>
+<td align="left">Maternal deaths, cause of death data per 100 000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">1220</td>
+<td align="left">NA</td>
+<td align="left">Estimated maternal mortality per 100 000 live births (WHO/UNICEFF/UNFPA estimates)</td>
+</tr>
+<tr class="even">
+<td align="left">1310</td>
+<td align="left">NA</td>
+<td align="left">SDR, diseases of circulatory system, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1311</td>
+<td align="left">1310</td>
+<td align="left">SDR, diseases of circulatory system, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1312</td>
+<td align="left">1310</td>
+<td align="left">SDR, diseases of circulatory system, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1320</td>
+<td align="left">NA</td>
+<td align="left">SDR, diseases of circulatory system, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1321</td>
+<td align="left">1320</td>
+<td align="left">SDR, diseases of circulatory system, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1322</td>
+<td align="left">1320</td>
+<td align="left">SDR, diseases of circulatory system, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1323</td>
+<td align="left">1320</td>
+<td align="left">SDR, diseases of circulatory system, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1324</td>
+<td align="left">1320</td>
+<td align="left">SDR, diseases of circulatory system, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1325</td>
+<td align="left">1320</td>
+<td align="left">SDR, diseases of circulatory system, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1330</td>
+<td align="left">NA</td>
+<td align="left">SDR, ischaemic heart disease, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1331</td>
+<td align="left">1330</td>
+<td align="left">SDR, ischaemic heart disease, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1332</td>
+<td align="left">1330</td>
+<td align="left">SDR, ischaemic heart disease, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1340</td>
+<td align="left">NA</td>
+<td align="left">SDR, ischaemic heart disease, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1341</td>
+<td align="left">1340</td>
+<td align="left">SDR, ischaemic heart disease, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1342</td>
+<td align="left">1340</td>
+<td align="left">SDR, ischaemic heart disease, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1343</td>
+<td align="left">1340</td>
+<td align="left">SDR, ischaemic heart disease, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1344</td>
+<td align="left">1340</td>
+<td align="left">SDR, ischaemic heart disease, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1345</td>
+<td align="left">1340</td>
+<td align="left">SDR, ischaemic heart disease, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1350</td>
+<td align="left">NA</td>
+<td align="left">SDR, cerebrovascular diseases, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1351</td>
+<td align="left">1350</td>
+<td align="left">SDR, cerebrovascular diseases, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1352</td>
+<td align="left">1350</td>
+<td align="left">SDR, cerebrovascular diseases, 064, per 100 000,female</td>
+</tr>
+<tr class="odd">
+<td align="left">1360</td>
+<td align="left">NA</td>
+<td align="left">SDR, cerebrovascular diseases, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1361</td>
+<td align="left">1360</td>
+<td align="left">SDR, cerebrovascular diseases, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1362</td>
+<td align="left">1360</td>
+<td align="left">SDR, cerebrovascular diseases, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1363</td>
+<td align="left">1360</td>
+<td align="left">SDR, cerebrovascular diseases, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1364</td>
+<td align="left">1360</td>
+<td align="left">SDR, cerebrovascular diseases, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1365</td>
+<td align="left">1360</td>
+<td align="left">SDR, cerebrovascular diseases, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1510</td>
+<td align="left">NA</td>
+<td align="left">SDR, malignant neoplasms, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1511</td>
+<td align="left">1510</td>
+<td align="left">SDR, malignant neoplasms, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1512</td>
+<td align="left">1510</td>
+<td align="left">SDR, malignant neoplasms, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1520</td>
+<td align="left">NA</td>
+<td align="left">SDR, malignant neoplasms, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1521</td>
+<td align="left">1520</td>
+<td align="left">SDR, malignant neoplasms, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1522</td>
+<td align="left">1520</td>
+<td align="left">SDR, malignant neoplasms, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1523</td>
+<td align="left">1520</td>
+<td align="left">SDR, malignant neoplasms, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1524</td>
+<td align="left">1520</td>
+<td align="left">SDR, malignant neoplasms, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1525</td>
+<td align="left">1520</td>
+<td align="left">SDR, malignant neoplasms, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1530</td>
+<td align="left">NA</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1531</td>
+<td align="left">1530</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1532</td>
+<td align="left">1530</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1540</td>
+<td align="left">NA</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1541</td>
+<td align="left">1540</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1542</td>
+<td align="left">1540</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1543</td>
+<td align="left">1540</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1544</td>
+<td align="left">1540</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1545</td>
+<td align="left">1540</td>
+<td align="left">SDR, trachea/bronchus/lung cancer, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1550</td>
+<td align="left">NA</td>
+<td align="left">SDR, cancer of the cervix uteri, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1560</td>
+<td align="left">NA</td>
+<td align="left">SDR, cancer of the cervix uteri, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1561</td>
+<td align="left">1560</td>
+<td align="left">SDR, cancer of the cervix uteri, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1580</td>
+<td align="left">NA</td>
+<td align="left">SDR, malignant neoplasm female breast, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1590</td>
+<td align="left">NA</td>
+<td align="left">SDR, malignant neoplasm female breast, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1591</td>
+<td align="left">1590</td>
+<td align="left">SDR, malignant neoplasm female breast, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1710</td>
+<td align="left">NA</td>
+<td align="left">SDR, external causes of injury and poisoning, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1711</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1712</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1713</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 04</td>
+</tr>
+<tr class="odd">
+<td align="left">1714</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 04, males</td>
+</tr>
+<tr class="even">
+<td align="left">1715</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 04, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1716</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 519</td>
+</tr>
+<tr class="even">
+<td align="left">1717</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 519, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1718</td>
+<td align="left">1710</td>
+<td align="left">SDR, external causes of injury and poisoning, 519, females</td>
+</tr>
+<tr class="even">
+<td align="left">1720</td>
+<td align="left">NA</td>
+<td align="left">SDR, external causes of injury and poisoning, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1721</td>
+<td align="left">1720</td>
+<td align="left">SDR, external causes of injury and poisoning, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1722</td>
+<td align="left">1720</td>
+<td align="left">SDR, external causes of injury and poisoning, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1723</td>
+<td align="left">1720</td>
+<td align="left">SDR, external causes of injury and poisoning, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1724</td>
+<td align="left">1720</td>
+<td align="left">SDR, external causes of injury and poisoning, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1725</td>
+<td align="left">1720</td>
+<td align="left">SDR, external causes of injury and poisoning, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1730</td>
+<td align="left">NA</td>
+<td align="left">SDR, motor vehicle traffic accidents, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1731</td>
+<td align="left">1730</td>
+<td align="left">SDR, motor vehicle traffic accidents, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1732</td>
+<td align="left">1730</td>
+<td align="left">SDR, motor vehicle traffic accidents, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1740</td>
+<td align="left">NA</td>
+<td align="left">SDR, motor vehicle traffic accidents, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1741</td>
+<td align="left">1740</td>
+<td align="left">SDR, motor vehicle traffic accidents, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1742</td>
+<td align="left">1740</td>
+<td align="left">SDR, motor vehicle traffic accidents, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1743</td>
+<td align="left">1740</td>
+<td align="left">SDR, motor vehicle traffic accidents, 65+, per 100 0000</td>
+</tr>
+<tr class="odd">
+<td align="left">1744</td>
+<td align="left">1740</td>
+<td align="left">SDR, motor vehicle traffic accidents, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1745</td>
+<td align="left">1740</td>
+<td align="left">SDR, motor vehicle traffic accidents, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1770</td>
+<td align="left">NA</td>
+<td align="left">SDR, suicide and self-inflicted injury, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1771</td>
+<td align="left">1770</td>
+<td align="left">SDR, suicide and self-inflicted injury, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1772</td>
+<td align="left">1770</td>
+<td align="left">SDR, suicide and self-inflicted injury, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1780</td>
+<td align="left">NA</td>
+<td align="left">SDR, suicide and self-inflicted injury, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1781</td>
+<td align="left">1780</td>
+<td align="left">SDR, suicide and self-inflicted injury, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1782</td>
+<td align="left">1780</td>
+<td align="left">SDR, suicide and self-inflicted injury, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1783</td>
+<td align="left">1780</td>
+<td align="left">SDR, suicide and self-inflicted injury, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1784</td>
+<td align="left">1780</td>
+<td align="left">SDR, suicide and self-inflicted injury, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1785</td>
+<td align="left">1780</td>
+<td align="left">SDR, suicide and self-inflicted injury, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1790</td>
+<td align="left">NA</td>
+<td align="left">SDR, homicide and intentional injury, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1791</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1792</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1793</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1794</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1795</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1796</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1797</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1798</td>
+<td align="left">1790</td>
+<td align="left">SDR, homicide and intentional injury, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1800</td>
+<td align="left">NA</td>
+<td align="left">SDR, transport accidents, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1801</td>
+<td align="left">1800</td>
+<td align="left">SDR, transport accidents, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1802</td>
+<td align="left">1800</td>
+<td align="left">SDR, transport accidents, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1810</td>
+<td align="left">NA</td>
+<td align="left">SDR all causes, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1811</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1812</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1813</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1814</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1815</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1816</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1817</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1818</td>
+<td align="left">1810</td>
+<td align="left">SDR, all causes, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1820</td>
+<td align="left">NA</td>
+<td align="left">SDR, infectious and parasitic diseases, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1821</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1822</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1823</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1824</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1825</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1826</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1827</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1828</td>
+<td align="left">1820</td>
+<td align="left">SDR, infectious and parasitic diseases, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1830</td>
+<td align="left">NA</td>
+<td align="left">SDR, diseases of respiratory system, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1831</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1832</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1833</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1834</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1835</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1836</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, 65+, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1837</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, 65+, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1838</td>
+<td align="left">1830</td>
+<td align="left">SDR, diseases of respiratory system, 65+, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1840</td>
+<td align="left">NA</td>
+<td align="left">SDR, bronchitis/emphysema/asthma, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1841</td>
+<td align="left">1840</td>
+<td align="left">SDR, bronchitis/emphysema/asthma, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1842</td>
+<td align="left">1840</td>
+<td align="left">SDR, bronchitis/emphysema/asthma, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1843</td>
+<td align="left">1840</td>
+<td align="left">SDR, bronchitis/emphysema/asthma, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1844</td>
+<td align="left">1840</td>
+<td align="left">SDR, bronchitis/emphysema/asthma, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1845</td>
+<td align="left">1840</td>
+<td align="left">SDR, bronchitis/emphysema/asthma, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1850</td>
+<td align="left">NA</td>
+<td align="left">SDR, diseases of digestive system, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1851</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1852</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1853</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1854</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1855</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1856</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1857</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1858</td>
+<td align="left">1850</td>
+<td align="left">SDR, diseases of digestive system, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1860</td>
+<td align="left">NA</td>
+<td align="left">SDR, chronic liver disease and cirrhosis, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1861</td>
+<td align="left">1860</td>
+<td align="left">SDR, chronic liver disease and cirrhosis, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1862</td>
+<td align="left">1860</td>
+<td align="left">SDR, chronic liver disease and cirrhosis, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1863</td>
+<td align="left">1860</td>
+<td align="left">SDR, chronic liver disease and cirrhosis, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1864</td>
+<td align="left">1860</td>
+<td align="left">SDR, chronic liver disease and cirrhosis, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1865</td>
+<td align="left">1860</td>
+<td align="left">SDR, chronic liver disease and cirrhosis, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1870</td>
+<td align="left">NA</td>
+<td align="left">SDR, endocrine, nutritional and metabolic diseases, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1871</td>
+<td align="left">1870</td>
+<td align="left">SDR, endocrine/nutrition/metabolic disease/disorder involving immune mechanism, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1872</td>
+<td align="left">1870</td>
+<td align="left">SDR, endocrine/nutrition/metabolic disease/disorder involving immune mechanism, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1873</td>
+<td align="left">1870</td>
+<td align="left">SDR, endocrine/nutrition/metabolic disease/disorder involving immune mechanism, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1874</td>
+<td align="left">1870</td>
+<td align="left">SDR, endocrine/nutrition/metabolic disease/disorder involving immune mechanism, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1875</td>
+<td align="left">1870</td>
+<td align="left">SDR, endocrine/nutrition/metabolic disease/disorder involving immune mechanism, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1880</td>
+<td align="left">NA</td>
+<td align="left">SDR, diabetes, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1881</td>
+<td align="left">1880</td>
+<td align="left">SDR, diabetes mellitus, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1882</td>
+<td align="left">1880</td>
+<td align="left">SDR, diabetes mellitus, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1883</td>
+<td align="left">1880</td>
+<td align="left">SDR, diabetes mellitus, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1884</td>
+<td align="left">1880</td>
+<td align="left">SDR, diabetes mellitus, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1885</td>
+<td align="left">1880</td>
+<td align="left">SDR, diabetes mellitus, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1890</td>
+<td align="left">NA</td>
+<td align="left">SDR, diseases of the blood, blood forming organs and certain immunity disorders, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1891</td>
+<td align="left">1890</td>
+<td align="left">SDR, diseases of the blood, blood forming organs and certain immunity disorders, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1892</td>
+<td align="left">1890</td>
+<td align="left">SDR, diseases of the blood, blood forming organs and certain immunity disorders, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1893</td>
+<td align="left">1890</td>
+<td align="left">SDR, diseases of the blood, blood forming organs and certain immunity disorders, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1894</td>
+<td align="left">1890</td>
+<td align="left">SDR, diseases of the blood, blood forming organs and certain immunity disorders, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1895</td>
+<td align="left">1890</td>
+<td align="left">SDR, diseases of the blood, blood forming organs and certain immunity disorders, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1900</td>
+<td align="left">NA</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1901</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1902</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1903</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, 064, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1904</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, 064, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1905</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, 064, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1906</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, 65+/100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1907</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, 65+/100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1908</td>
+<td align="left">1900</td>
+<td align="left">SDR, mental disorders, diseases of nervous system and sense organs, 65+/100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1910</td>
+<td align="left">NA</td>
+<td align="left">SDR, disease of genitourinary system, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1911</td>
+<td align="left">1910</td>
+<td align="left">SDR, disease of genitourinary system, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1912</td>
+<td align="left">1910</td>
+<td align="left">SDR, disease of genitourinary system, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1913</td>
+<td align="left">1910</td>
+<td align="left">SDR, disease of genitourinary system, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1914</td>
+<td align="left">1910</td>
+<td align="left">SDR, disease of genitourinary system, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1915</td>
+<td align="left">1910</td>
+<td align="left">SDR, disease of genitourinary system, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1920</td>
+<td align="left">NA</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1921</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1922</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1923</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1924</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1925</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1926</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, 65+, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1927</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, 65+, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1928</td>
+<td align="left">1920</td>
+<td align="left">SDR, symptoms, signs and ill defined conditions, 65+, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1930</td>
+<td align="left">NA</td>
+<td align="left">SDR, tuberculosis, all ages, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1931</td>
+<td align="left">1930</td>
+<td align="left">SDR, tuberculosis, all ages, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1932</td>
+<td align="left">1930</td>
+<td align="left">SDR, tuberculosis, all ages, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1940</td>
+<td align="left">NA</td>
+<td align="left">SDR, diarrhoeal diseases, under 5 years, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1941</td>
+<td align="left">1940</td>
+<td align="left">SDR, diarrhoeal diseases, under 5 years, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1942</td>
+<td align="left">1940</td>
+<td align="left">SDR, diarrhoeal diseases, under 5 years, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1960</td>
+<td align="left">NA</td>
+<td align="left">SDR, acute respiratory infections, pneumonia and influenza, under 5 years, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1961</td>
+<td align="left">1960</td>
+<td align="left">SDR, acute respiratory infections, pneumonia and influenza, under 5 years, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1962</td>
+<td align="left">1960</td>
+<td align="left">SDR, acute respiratory infections, pneumonia and influenza, under 5 years, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1970</td>
+<td align="left">NA</td>
+<td align="left">SDR, selected alcohol-related causes, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">1971</td>
+<td align="left">1970</td>
+<td align="left">SDR, selected alcohol-related causes, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1972</td>
+<td align="left">1970</td>
+<td align="left">SDR, selected alcohol-related causes, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">1980</td>
+<td align="left">NA</td>
+<td align="left">SDR, selected smoking-related causes, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">1981</td>
+<td align="left">1980</td>
+<td align="left">SDR, selected smoking-related causes, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">1982</td>
+<td align="left">1980</td>
+<td align="left">SDR, selected smoking-related causes, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">1990</td>
+<td align="left">NA</td>
+<td align="left">SDR, major noncommunicable diseases, 30-69 years, both sexes</td>
+</tr>
+<tr class="even">
+<td align="left">1991</td>
+<td align="left">1990</td>
+<td align="left">SDR, major noncommunicable diseases, 30-69 years, males</td>
+</tr>
+<tr class="odd">
+<td align="left">1992</td>
+<td align="left">1990</td>
+<td align="left">SDR, major noncommunicable diseases, 30-69 years, females</td>
+</tr>
+<tr class="even">
+<td align="left">1993</td>
+<td align="left">1990</td>
+<td align="left">SDR, digestive diseases, 30-69 years, both sexes</td>
+</tr>
+<tr class="odd">
+<td align="left">1994</td>
+<td align="left">1990</td>
+<td align="left">SDR, digestive diseases, 30-69 years, males</td>
+</tr>
+<tr class="even">
+<td align="left">1995</td>
+<td align="left">1990</td>
+<td align="left">SDR, digestive diseases, 30-69 years, females</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="morbidity-disability-and-hospital-discharges" class="section level4">
+<h4>[3] MORBIDITY, DISABILITY AND HOSPITAL DISCHARGES</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2010</td>
+<td align="left">NA</td>
+<td align="left">Incidence of tuberculosis per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2011</td>
+<td align="left">2010</td>
+<td align="left">Number of new tuberculosis cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2012</td>
+<td align="left">2010</td>
+<td align="left">Estimated incidence of tuberculosis per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2013</td>
+<td align="left">2010</td>
+<td align="left">Estimated prevalence of tuberculosis per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2014</td>
+<td align="left">2010</td>
+<td align="left">Estimated mortality of tuberculosis per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2015</td>
+<td align="left">2010</td>
+<td align="left">Proportion (%) of tuberculosis cases detected under DOTS</td>
+</tr>
+<tr class="odd">
+<td align="left">2016</td>
+<td align="left">2010</td>
+<td align="left">Proportion (%) of tuberculosis cases cured under DOTS</td>
+</tr>
+<tr class="even">
+<td align="left">2020</td>
+<td align="left">NA</td>
+<td align="left">Incidence of viral hepatitis per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2021</td>
+<td align="left">2020</td>
+<td align="left">Number of new viral hepatitis cases</td>
+</tr>
+<tr class="even">
+<td align="left">2022</td>
+<td align="left">2020</td>
+<td align="left">Number of new hepatitis C cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2023</td>
+<td align="left">2020</td>
+<td align="left">Incidence of hepatitis C per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2030</td>
+<td align="left">NA</td>
+<td align="left">Incidence of viral hepatitis A per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2031</td>
+<td align="left">2030</td>
+<td align="left">Number of new hepatitis A cases</td>
+</tr>
+<tr class="even">
+<td align="left">2040</td>
+<td align="left">NA</td>
+<td align="left">Incidence of viral hepatitis B per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2041</td>
+<td align="left">2040</td>
+<td align="left">Number of new hepatitis B cases</td>
+</tr>
+<tr class="even">
+<td align="left">2050</td>
+<td align="left">NA</td>
+<td align="left">Incidence of syphilis per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2051</td>
+<td align="left">2050</td>
+<td align="left">Number of new syphilis cases</td>
+</tr>
+<tr class="even">
+<td align="left">2060</td>
+<td align="left">NA</td>
+<td align="left">Incidence of gonococcal infection per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2061</td>
+<td align="left">2060</td>
+<td align="left">Number of new gonococcal infection cases</td>
+</tr>
+<tr class="even">
+<td align="left">2070</td>
+<td align="left">NA</td>
+<td align="left">Incidence of pertussis per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2071</td>
+<td align="left">2070</td>
+<td align="left">Number of new pertussis cases</td>
+</tr>
+<tr class="even">
+<td align="left">2080</td>
+<td align="left">NA</td>
+<td align="left">Incidence of measles per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2081</td>
+<td align="left">2080</td>
+<td align="left">Number of new measles cases</td>
+</tr>
+<tr class="even">
+<td align="left">2090</td>
+<td align="left">NA</td>
+<td align="left">Incidence of malaria per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2091</td>
+<td align="left">2090</td>
+<td align="left">Number of new malaria cases</td>
+</tr>
+<tr class="even">
+<td align="left">2092</td>
+<td align="left">2090</td>
+<td align="left">Number of deaths from malaria</td>
+</tr>
+<tr class="odd">
+<td align="left">2100</td>
+<td align="left">NA</td>
+<td align="left">Incidence of diphtheria per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2101</td>
+<td align="left">2100</td>
+<td align="left">Number of new diphtheria cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2110</td>
+<td align="left">NA</td>
+<td align="left">Incidence of tetanus per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2111</td>
+<td align="left">2110</td>
+<td align="left">Number of new tetanus cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2120</td>
+<td align="left">NA</td>
+<td align="left">Incidence of acute poliomyelitis per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2121</td>
+<td align="left">2120</td>
+<td align="left">Number of new poliomyelitis cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2130</td>
+<td align="left">NA</td>
+<td align="left">Incidence of congenital syphilis per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2131</td>
+<td align="left">2130</td>
+<td align="left">Number of new congenital syphilis cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2140</td>
+<td align="left">NA</td>
+<td align="left">Incidence of congenital rubella per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2141</td>
+<td align="left">2140</td>
+<td align="left">Number of new congenital rubella cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2150</td>
+<td align="left">NA</td>
+<td align="left">Incidence of neonatal tetanus per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2151</td>
+<td align="left">2150</td>
+<td align="left">Number of new neonatal tetanus cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2160</td>
+<td align="left">NA</td>
+<td align="left">Incidence of rubella per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2161</td>
+<td align="left">2160</td>
+<td align="left">Number of new rubella cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2170</td>
+<td align="left">NA</td>
+<td align="left">Incidence of mumps per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2171</td>
+<td align="left">2170</td>
+<td align="left">Number of new mumps cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2180</td>
+<td align="left">NA</td>
+<td align="left">Incidence of AIDS per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2182</td>
+<td align="left">2180</td>
+<td align="left">Number of new AIDS cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2190</td>
+<td align="left">NA</td>
+<td align="left">Incidence of HIV per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2191</td>
+<td align="left">2190</td>
+<td align="left">Number of new HIV infections</td>
+</tr>
+<tr class="odd">
+<td align="left">2200</td>
+<td align="left">NA</td>
+<td align="left">Incidence of Haemophilus influenzae type b invasive disease per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2201</td>
+<td align="left">2200</td>
+<td align="left">Number of new Haemophilus influenzae type b invasive disease cases</td>
+</tr>
+<tr class="odd">
+<td align="left">2300</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, infectious and parasitic diseases per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2301</td>
+<td align="left">2300</td>
+<td align="left">Hospital discharges, infectious and parasitic diseases</td>
+</tr>
+<tr class="odd">
+<td align="left">2310</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, all neoplasms per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2311</td>
+<td align="left">2310</td>
+<td align="left">Hospital discharges, all neoplasms</td>
+</tr>
+<tr class="odd">
+<td align="left">2320</td>
+<td align="left">NA</td>
+<td align="left">Incidence of cancer per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2321</td>
+<td align="left">2320</td>
+<td align="left">Number of new cases of cancer</td>
+</tr>
+<tr class="odd">
+<td align="left">2322</td>
+<td align="left">2320</td>
+<td align="left">Number of new cases of cancer, males</td>
+</tr>
+<tr class="even">
+<td align="left">2323</td>
+<td align="left">2320</td>
+<td align="left">Number of new cases of cancer, females</td>
+</tr>
+<tr class="odd">
+<td align="left">2324</td>
+<td align="left">2320</td>
+<td align="left">Incidence of cancer per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">2325</td>
+<td align="left">2320</td>
+<td align="left">Incidence of cancer per 100 000, female</td>
+</tr>
+<tr class="odd">
+<td align="left">2330</td>
+<td align="left">NA</td>
+<td align="left">Prevalence of cancer (%)</td>
+</tr>
+<tr class="even">
+<td align="left">2331</td>
+<td align="left">2330</td>
+<td align="left">Number of all cases of cancer at year’s end</td>
+</tr>
+<tr class="odd">
+<td align="left">2332</td>
+<td align="left">2330</td>
+<td align="left">Number of all cases cancer at year’s end, males</td>
+</tr>
+<tr class="even">
+<td align="left">2333</td>
+<td align="left">2330</td>
+<td align="left">Number of all cases cancer at year’s end, females</td>
+</tr>
+<tr class="odd">
+<td align="left">2334</td>
+<td align="left">2330</td>
+<td align="left">Prevalence of cancer (%), males</td>
+</tr>
+<tr class="even">
+<td align="left">2335</td>
+<td align="left">2330</td>
+<td align="left">Prevalence of cancer (%), females</td>
+</tr>
+<tr class="odd">
+<td align="left">2340</td>
+<td align="left">NA</td>
+<td align="left">Incidence of trachea, bronchus and lung cancer per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2341</td>
+<td align="left">2340</td>
+<td align="left">Number of new cases of trachea, bronchus and lung cancer</td>
+</tr>
+<tr class="odd">
+<td align="left">2342</td>
+<td align="left">2340</td>
+<td align="left">Number of new cases of trachea, bronchus and lung cancer, males</td>
+</tr>
+<tr class="even">
+<td align="left">2343</td>
+<td align="left">2340</td>
+<td align="left">Number of new cases of trachea, bronchus and lung cancer, females</td>
+</tr>
+<tr class="odd">
+<td align="left">2344</td>
+<td align="left">2340</td>
+<td align="left">Incidence of trachea, bronchus and lung cancer per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">2345</td>
+<td align="left">2340</td>
+<td align="left">Incidence of trachea, bronchus and lung cancer per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">2350</td>
+<td align="left">NA</td>
+<td align="left">Incidence of female breast cancer per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2351</td>
+<td align="left">2350</td>
+<td align="left">Number of new cases of female breast cancer</td>
+</tr>
+<tr class="odd">
+<td align="left">2360</td>
+<td align="left">NA</td>
+<td align="left">Incidence of cervix uteri cancer per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2361</td>
+<td align="left">2360</td>
+<td align="left">Number of new cases of cervix uteri cancer</td>
+</tr>
+<tr class="odd">
+<td align="left">2370</td>
+<td align="left">NA</td>
+<td align="left">Prevalence of diabetes mellitus (%)</td>
+</tr>
+<tr class="even">
+<td align="left">2371</td>
+<td align="left">2370</td>
+<td align="left">Number of all cases of diabetes mellitus at year’s end</td>
+</tr>
+<tr class="odd">
+<td align="left">2372</td>
+<td align="left">2370</td>
+<td align="left">Number of new cases of diabetes mellitus</td>
+</tr>
+<tr class="even">
+<td align="left">2373</td>
+<td align="left">2370</td>
+<td align="left">New cases, diabetes mellitus per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2380</td>
+<td align="left">NA</td>
+<td align="left">Number of mental patients staying in hospitals 365+ days per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2381</td>
+<td align="left">2380</td>
+<td align="left">Number of mental patients staying in hospitals 365+ days</td>
+</tr>
+<tr class="odd">
+<td align="left">2382</td>
+<td align="left">2380</td>
+<td align="left">Number of hospital discharges, mental and behavioural disorders</td>
+</tr>
+<tr class="even">
+<td align="left">2383</td>
+<td align="left">2380</td>
+<td align="left">Hospital discharges, mental and behavioural disorders, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2390</td>
+<td align="left">NA</td>
+<td align="left">Incidence of mental disorders per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2391</td>
+<td align="left">2390</td>
+<td align="left">Number of new cases of mental disorders</td>
+</tr>
+<tr class="odd">
+<td align="left">2400</td>
+<td align="left">NA</td>
+<td align="left">Incidence of alcoholic psychosis per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2401</td>
+<td align="left">2400</td>
+<td align="left">Number of new cases of alcoholic psychosis</td>
+</tr>
+<tr class="odd">
+<td align="left">2410</td>
+<td align="left">NA</td>
+<td align="left">Prevalence of mental disorders (%)</td>
+</tr>
+<tr class="even">
+<td align="left">2411</td>
+<td align="left">2410</td>
+<td align="left">All cases of mental disorders at year’s end</td>
+</tr>
+<tr class="odd">
+<td align="left">2450</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, circulatory system disease, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2451</td>
+<td align="left">2450</td>
+<td align="left">Number of hospital discharges, circulatory system disease</td>
+</tr>
+<tr class="odd">
+<td align="left">2460</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, ischaemic heart disease, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2461</td>
+<td align="left">2460</td>
+<td align="left">Number of hospital discharges, ischaemic heart disease</td>
+</tr>
+<tr class="odd">
+<td align="left">2480</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, cerebrovascular diseases, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2481</td>
+<td align="left">2480</td>
+<td align="left">Hospital discharges, cerebrovascular diseases</td>
+</tr>
+<tr class="odd">
+<td align="left">2500</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, respiratory system diseases, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2501</td>
+<td align="left">2500</td>
+<td align="left">Hospital discharges, respiratory system diseases</td>
+</tr>
+<tr class="odd">
+<td align="left">2510</td>
+<td align="left">NA</td>
+<td align="left">Prevalence of chronic obstructive pulmonary disease (%)</td>
+</tr>
+<tr class="even">
+<td align="left">2511</td>
+<td align="left">2510</td>
+<td align="left">Number of cases of chronic obstructive pulmonary disease</td>
+</tr>
+<tr class="odd">
+<td align="left">2520</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, digestive system diseases, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2521</td>
+<td align="left">2520</td>
+<td align="left">Hospital discharges, digestive system diseases</td>
+</tr>
+<tr class="odd">
+<td align="left">2530</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, musculoskeletal system and connective tissue diseases, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2531</td>
+<td align="left">2530</td>
+<td align="left">Hospital discharges, musculoskeletal system and connective tissue diseases</td>
+</tr>
+<tr class="odd">
+<td align="left">2540</td>
+<td align="left">NA</td>
+<td align="left">Hospital discharges, injury and poisoning, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">2541</td>
+<td align="left">2540</td>
+<td align="left">Hospital discharges, injury and poisoning</td>
+</tr>
+<tr class="odd">
+<td align="left">2700</td>
+<td align="left">NA</td>
+<td align="left">Absenteeism from work due to illness, days per employee per year</td>
+</tr>
+<tr class="even">
+<td align="left">2710</td>
+<td align="left">NA</td>
+<td align="left">New invalidity/disability cases per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2711</td>
+<td align="left">2710</td>
+<td align="left">Number of newly recognized invalidity/disability cases</td>
+</tr>
+<tr class="even">
+<td align="left">2720</td>
+<td align="left">NA</td>
+<td align="left">People receiving social/disability benefits per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">2721</td>
+<td align="left">2720</td>
+<td align="left">Number of people receiving social/disability benefits</td>
+</tr>
+<tr class="even">
+<td align="left">2730</td>
+<td align="left">NA</td>
+<td align="left">% of disabled people of working age engaged in regular occupational activity</td>
+</tr>
+<tr class="odd">
+<td align="left">2800</td>
+<td align="left">NA</td>
+<td align="left">% population self-assessing health as good</td>
+</tr>
+<tr class="even">
+<td align="left">2801</td>
+<td align="left">2800</td>
+<td align="left">% population self-assessing health as good, males</td>
+</tr>
+<tr class="odd">
+<td align="left">2802</td>
+<td align="left">2800</td>
+<td align="left">% population self-assessing health as good, females</td>
+</tr>
+<tr class="even">
+<td align="left">2810</td>
+<td align="left">NA</td>
+<td align="left">Decayed, missing or filled teeth at age 12 (DMFT-12 index)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="life-styles" class="section level4">
+<h4>[4] LIFE STYLES</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">3010</td>
+<td align="left">NA</td>
+<td align="left">% of regular daily smokers in the population, age 15+</td>
+</tr>
+<tr class="even">
+<td align="left">3011</td>
+<td align="left">3010</td>
+<td align="left">% of regular daily smokers in the population, age 15+, males</td>
+</tr>
+<tr class="odd">
+<td align="left">3012</td>
+<td align="left">3010</td>
+<td align="left">% of regular daily smokers in the population, age 15+, females</td>
+</tr>
+<tr class="even">
+<td align="left">3013</td>
+<td align="left">3010</td>
+<td align="left">Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">3014</td>
+<td align="left">3010</td>
+<td align="left">Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%), males</td>
+</tr>
+<tr class="even">
+<td align="left">3015</td>
+<td align="left">3010</td>
+<td align="left">Age-standardized prevalence of current tobacco smoking among people aged 15 years and over, WHO estimates (%), females</td>
+</tr>
+<tr class="odd">
+<td align="left">3016</td>
+<td align="left">3010</td>
+<td align="left">Number cigarettes consumed per person per year</td>
+</tr>
+<tr class="even">
+<td align="left">3017</td>
+<td align="left">3010</td>
+<td align="left">Total number of cigarettes consumed (in million pieces), per year</td>
+</tr>
+<tr class="odd">
+<td align="left">3020</td>
+<td align="left">NA</td>
+<td align="left">Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%)</td>
+</tr>
+<tr class="even">
+<td align="left">3021</td>
+<td align="left">3020</td>
+<td align="left">Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%), males</td>
+</tr>
+<tr class="odd">
+<td align="left">3022</td>
+<td align="left">3020</td>
+<td align="left">Age-standardized prevalence of overweight (defined as BMI = 25 kg/m2) in people aged 18 years and over, WHO estimates (%), femal</td>
+</tr>
+<tr class="even">
+<td align="left">3023</td>
+<td align="left">3020</td>
+<td align="left">Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">3024</td>
+<td align="left">3020</td>
+<td align="left">Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%), males</td>
+</tr>
+<tr class="even">
+<td align="left">3025</td>
+<td align="left">3020</td>
+<td align="left">Age-standardized prevalence of obesity (defined as BMI = 30 kg/m2) in people aged 18 years and over, WHO estimates (%), females</td>
+</tr>
+<tr class="odd">
+<td align="left">3050</td>
+<td align="left">NA</td>
+<td align="left">Pure alcohol consumption, litres per capita, age 15+</td>
+</tr>
+<tr class="even">
+<td align="left">3051</td>
+<td align="left">3050</td>
+<td align="left">Spirits consumed in pure alcohol, litres per capita, age 15+</td>
+</tr>
+<tr class="odd">
+<td align="left">3052</td>
+<td align="left">3050</td>
+<td align="left">Wine consumed in pure alcohol, litres per capita, age 15+</td>
+</tr>
+<tr class="even">
+<td align="left">3053</td>
+<td align="left">3050</td>
+<td align="left">Beer consumed in pure alcohol, litres per capita, age 15+</td>
+</tr>
+<tr class="odd">
+<td align="left">3054</td>
+<td align="left">3050</td>
+<td align="left">Pure alcohol consumed, litres per capita</td>
+</tr>
+<tr class="even">
+<td align="left">3060</td>
+<td align="left">NA</td>
+<td align="left">Road traffic accidents involving alcohol per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">3061</td>
+<td align="left">3060</td>
+<td align="left">Number of road traffic accidents involving alcohol</td>
+</tr>
+<tr class="even">
+<td align="left">3080</td>
+<td align="left">NA</td>
+<td align="left">First admissions to drug treatment centres per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">3081</td>
+<td align="left">3080</td>
+<td align="left">Number of first admissions to drug treatment centres</td>
+</tr>
+<tr class="even">
+<td align="left">3082</td>
+<td align="left">3080</td>
+<td align="left">Number of deaths from overdose of illicit drugs</td>
+</tr>
+<tr class="odd">
+<td align="left">3150</td>
+<td align="left">NA</td>
+<td align="left">Road traffic accidents with injury per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">3151</td>
+<td align="left">3150</td>
+<td align="left">Number of road traffic accidents with injury</td>
+</tr>
+<tr class="odd">
+<td align="left">3160</td>
+<td align="left">NA</td>
+<td align="left">People killed or injured in road traffic accidents per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">3161</td>
+<td align="left">3160</td>
+<td align="left">Number of people killed or injured in road traffic accidents</td>
+</tr>
+<tr class="odd">
+<td align="left">3200</td>
+<td align="left">NA</td>
+<td align="left">Average number of calories available per person per day (kcal)</td>
+</tr>
+<tr class="even">
+<td align="left">3210</td>
+<td align="left">NA</td>
+<td align="left">% of total energy available from fat</td>
+</tr>
+<tr class="odd">
+<td align="left">3211</td>
+<td align="left">3210</td>
+<td align="left">Fat available per person per day (g)</td>
+</tr>
+<tr class="even">
+<td align="left">3220</td>
+<td align="left">NA</td>
+<td align="left">% of total energy available from protein</td>
+</tr>
+<tr class="odd">
+<td align="left">3221</td>
+<td align="left">3220</td>
+<td align="left">Protein available per person per day (g)</td>
+</tr>
+<tr class="even">
+<td align="left">3230</td>
+<td align="left">NA</td>
+<td align="left">Average amount of cereal available per person per year (kg)</td>
+</tr>
+<tr class="odd">
+<td align="left">3240</td>
+<td align="left">NA</td>
+<td align="left">Average amount of fruits and vegetables available per person per year (kg)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="environment" class="section level4">
+<h4>[5] ENVIRONMENT</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">4010</td>
+<td align="left">NA</td>
+<td align="left">Microbiological foodborne diseases, number of outbreaks</td>
+</tr>
+<tr class="even">
+<td align="left">4020</td>
+<td align="left">NA</td>
+<td align="left">Microbiological foodborne diseases per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">4021</td>
+<td align="left">4020</td>
+<td align="left">Number of cases of microbiological foodborne diseases</td>
+</tr>
+<tr class="even">
+<td align="left">4030</td>
+<td align="left">NA</td>
+<td align="left">Salmonellosis cases per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">4031</td>
+<td align="left">4030</td>
+<td align="left">Number of salmonellosis cases</td>
+</tr>
+<tr class="even">
+<td align="left">4040</td>
+<td align="left">NA</td>
+<td align="left">New cases of occupational diseases per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">4041</td>
+<td align="left">4040</td>
+<td align="left">Number of new cases of occupational diseases</td>
+</tr>
+<tr class="even">
+<td align="left">4060</td>
+<td align="left">NA</td>
+<td align="left">People injured due to work-related accidents per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">4061</td>
+<td align="left">4060</td>
+<td align="left">Number of people injured due to work-related accidents</td>
+</tr>
+<tr class="even">
+<td align="left">4070</td>
+<td align="left">NA</td>
+<td align="left">Deaths due to work-related accidents per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">4071</td>
+<td align="left">4070</td>
+<td align="left">Number of deaths due to work-related accidents</td>
+</tr>
+<tr class="even">
+<td align="left">4150</td>
+<td align="left">NA</td>
+<td align="left">Sulfur dioxide emissions, kg per capita per year</td>
+</tr>
+<tr class="odd">
+<td align="left">4160</td>
+<td align="left">NA</td>
+<td align="left">Average annual concentration of sulfur dioxide (SO2) in capital, µg/m3</td>
+</tr>
+<tr class="even">
+<td align="left">4170</td>
+<td align="left">NA</td>
+<td align="left">Average annual concentration of particulate matter &lt;10 µm (PM10) in the capital, µg/m3</td>
+</tr>
+<tr class="odd">
+<td align="left">4180</td>
+<td align="left">NA</td>
+<td align="left">Average annual concentration of nitrogen dioxide (NO2) in capital, µg/m3</td>
+</tr>
+<tr class="even">
+<td align="left">4190</td>
+<td align="left">NA</td>
+<td align="left">Average annual concentration of ozone (O3) in the capital, µg/m3</td>
+</tr>
+<tr class="odd">
+<td align="left">4300</td>
+<td align="left">NA</td>
+<td align="left">% population with homes connected to water supply system</td>
+</tr>
+<tr class="even">
+<td align="left">4301</td>
+<td align="left">4300</td>
+<td align="left">% population with homes connected to water supply system, urban</td>
+</tr>
+<tr class="odd">
+<td align="left">4302</td>
+<td align="left">4300</td>
+<td align="left">% population with homes connected to water supply system, rural</td>
+</tr>
+<tr class="even">
+<td align="left">4310</td>
+<td align="left">NA</td>
+<td align="left">% population with access to sewage system, septic tank or other hygienic means of sewage disposal</td>
+</tr>
+<tr class="odd">
+<td align="left">4311</td>
+<td align="left">4310</td>
+<td align="left">% population with access to sewage system, septic tank or other hygienic means of sewage disposal, urban</td>
+</tr>
+<tr class="even">
+<td align="left">4312</td>
+<td align="left">4310</td>
+<td align="left">% population with access to sewage system, septic tank or other hygienic means of sewage disposal, rural</td>
+</tr>
+<tr class="odd">
+<td align="left">4350</td>
+<td align="left">NA</td>
+<td align="left">Average number of people per room in occupied housing unit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="health-care-resources" class="section level4">
+<h4>[6] HEALTH CARE RESOURCES</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">5010</td>
+<td align="left">NA</td>
+<td align="left">Hospitals per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5011</td>
+<td align="left">5010</td>
+<td align="left">Number of hospitals</td>
+</tr>
+<tr class="odd">
+<td align="left">5020</td>
+<td align="left">NA</td>
+<td align="left">Acute (short-stay) hospitals per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5021</td>
+<td align="left">5020</td>
+<td align="left">Number of acute (short-stay) hospitals</td>
+</tr>
+<tr class="odd">
+<td align="left">5030</td>
+<td align="left">NA</td>
+<td align="left">Primary health care units per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5031</td>
+<td align="left">5030</td>
+<td align="left">Number of primary health care units</td>
+</tr>
+<tr class="odd">
+<td align="left">5050</td>
+<td align="left">NA</td>
+<td align="left">Hospital beds per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5051</td>
+<td align="left">5050</td>
+<td align="left">Total number of hospital beds</td>
+</tr>
+<tr class="odd">
+<td align="left">5060</td>
+<td align="left">NA</td>
+<td align="left">Acute care hospital beds per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5061</td>
+<td align="left">5060</td>
+<td align="left">Number of acute care hospital beds</td>
+</tr>
+<tr class="odd">
+<td align="left">5062</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, medical group of specialties</td>
+</tr>
+<tr class="even">
+<td align="left">5063</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, medical group of specialties, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5064</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, surgical group of specialties</td>
+</tr>
+<tr class="even">
+<td align="left">5065</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, surgical group of specialties, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5066</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, obstetric and gynaecological group of specialties</td>
+</tr>
+<tr class="even">
+<td align="left">5067</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, obstetric and gynaecological group of specialties, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5068</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, paediatric group of specialties</td>
+</tr>
+<tr class="even">
+<td align="left">5069</td>
+<td align="left">5060</td>
+<td align="left">Acute care hospital beds, paediatric group of specialties, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5070</td>
+<td align="left">NA</td>
+<td align="left">Psychiatric hospital beds per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5071</td>
+<td align="left">5070</td>
+<td align="left">Number of psychiatric hospital beds</td>
+</tr>
+<tr class="odd">
+<td align="left">5100</td>
+<td align="left">NA</td>
+<td align="left">Nursing and elderly home beds per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5101</td>
+<td align="left">5100</td>
+<td align="left">Number of nursing and elderly home beds</td>
+</tr>
+<tr class="odd">
+<td align="left">5150</td>
+<td align="left">NA</td>
+<td align="left">Private inpatient hospital beds as % of all beds</td>
+</tr>
+<tr class="even">
+<td align="left">5151</td>
+<td align="left">5150</td>
+<td align="left">Number of private inpatient hospital beds</td>
+</tr>
+<tr class="odd">
+<td align="left">5250</td>
+<td align="left">NA</td>
+<td align="left">Physicians per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5251</td>
+<td align="left">5250</td>
+<td align="left">Number of physicians, physical persons (PP)</td>
+</tr>
+<tr class="odd">
+<td align="left">5252</td>
+<td align="left">5250</td>
+<td align="left">Physicians, full-time equivalent (FTE) per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5253</td>
+<td align="left">5250</td>
+<td align="left">Number of physicians, full-time equivalent (FTE)</td>
+</tr>
+<tr class="odd">
+<td align="left">5260</td>
+<td align="left">NA</td>
+<td align="left">Physicians, medical group of specialties (PP), per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5261</td>
+<td align="left">5260</td>
+<td align="left">Number of physicians, medical group of specialties (PP)</td>
+</tr>
+<tr class="odd">
+<td align="left">5262</td>
+<td align="left">5260</td>
+<td align="left">Number of physicians, surgical group of specialties (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5263</td>
+<td align="left">5260</td>
+<td align="left">Physicians, surgical group of specialties (PP), per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5264</td>
+<td align="left">5260</td>
+<td align="left">Number of physicians, obstetric and gynaecological group of specialties (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5265</td>
+<td align="left">5260</td>
+<td align="left">Physicians, obstetric and gynaecological group of specialties (PP), per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5266</td>
+<td align="left">5260</td>
+<td align="left">Number of physicians, paediatric specialties (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5267</td>
+<td align="left">5260</td>
+<td align="left">Physicians, paediatric group of specialties (PP), per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5270</td>
+<td align="left">NA</td>
+<td align="left">% of physicians working in hospitals</td>
+</tr>
+<tr class="even">
+<td align="left">5290</td>
+<td align="left">NA</td>
+<td align="left">General practitioners (PP) per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5291</td>
+<td align="left">5290</td>
+<td align="left">Number of general practitioners (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5300</td>
+<td align="left">NA</td>
+<td align="left">Dentists (PP) per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5301</td>
+<td align="left">5300</td>
+<td align="left">Number of dentists (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5302</td>
+<td align="left">5300</td>
+<td align="left">Dentists (FTE) per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5303</td>
+<td align="left">5300</td>
+<td align="left">Number of dentists (FTE)</td>
+</tr>
+<tr class="even">
+<td align="left">5310</td>
+<td align="left">NA</td>
+<td align="left">Pharmacists (PP) per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5311</td>
+<td align="left">5310</td>
+<td align="left">Number of pharmacists (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5320</td>
+<td align="left">NA</td>
+<td align="left">Nurses (PP) per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5321</td>
+<td align="left">5320</td>
+<td align="left">Number of nurses (PP)</td>
+</tr>
+<tr class="even">
+<td align="left">5322</td>
+<td align="left">5320</td>
+<td align="left">Nurses (FTE) per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">5323</td>
+<td align="left">5320</td>
+<td align="left">Number of nurses (FTE)</td>
+</tr>
+<tr class="even">
+<td align="left">5330</td>
+<td align="left">NA</td>
+<td align="left">% of nurses working in hospitals</td>
+</tr>
+<tr class="odd">
+<td align="left">5350</td>
+<td align="left">NA</td>
+<td align="left">Midwives (PP) per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5351</td>
+<td align="left">5350</td>
+<td align="left">Number of midwives (PP)</td>
+</tr>
+<tr class="odd">
+<td align="left">5352</td>
+<td align="left">5350</td>
+<td align="left">Midwives (FTE) per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5353</td>
+<td align="left">5350</td>
+<td align="left">Number of midwives (FTE)</td>
+</tr>
+<tr class="odd">
+<td align="left">5400</td>
+<td align="left">NA</td>
+<td align="left">Physicians graduated per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5401</td>
+<td align="left">5400</td>
+<td align="left">Number of physicians graduated in given year</td>
+</tr>
+<tr class="odd">
+<td align="left">5410</td>
+<td align="left">NA</td>
+<td align="left">Nurses graduated per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5411</td>
+<td align="left">5410</td>
+<td align="left">Number of nurses graduated in given year</td>
+</tr>
+<tr class="odd">
+<td align="left">5420</td>
+<td align="left">NA</td>
+<td align="left">Midwives graduated per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5421</td>
+<td align="left">5420</td>
+<td align="left">Number of midwives graduated in given year</td>
+</tr>
+<tr class="odd">
+<td align="left">5430</td>
+<td align="left">NA</td>
+<td align="left">Pharmacists graduated per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5431</td>
+<td align="left">5430</td>
+<td align="left">Number of pharmacists graduated in given year</td>
+</tr>
+<tr class="odd">
+<td align="left">5440</td>
+<td align="left">NA</td>
+<td align="left">Dentists graduated per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">5441</td>
+<td align="left">5440</td>
+<td align="left">Number of dentists graduated in given year</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="health-care-utilization-and-expenditure" class="section level4">
+<h4>[7] HEALTH CARE UTILIZATION AND EXPENDITURE</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">6010</td>
+<td align="left">NA</td>
+<td align="left">Inpatient care discharges per 100</td>
+</tr>
+<tr class="even">
+<td align="left">6011</td>
+<td align="left">6010</td>
+<td align="left">Number of all hospital discharges</td>
+</tr>
+<tr class="odd">
+<td align="left">6020</td>
+<td align="left">NA</td>
+<td align="left">Acute care hospital discharges per 100</td>
+</tr>
+<tr class="even">
+<td align="left">6021</td>
+<td align="left">6020</td>
+<td align="left">Number of acute care hospital discharges</td>
+</tr>
+<tr class="odd">
+<td align="left">6030</td>
+<td align="left">NA</td>
+<td align="left">Inpatient surgical procedures per year per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">6031</td>
+<td align="left">6030</td>
+<td align="left">Total number of inpatient surgical procedures per year</td>
+</tr>
+<tr class="odd">
+<td align="left">6100</td>
+<td align="left">NA</td>
+<td align="left">Average length of stay, all hospitals</td>
+</tr>
+<tr class="even">
+<td align="left">6110</td>
+<td align="left">NA</td>
+<td align="left">Average length of stay, acute care hospitals only</td>
+</tr>
+<tr class="odd">
+<td align="left">6210</td>
+<td align="left">NA</td>
+<td align="left">Bed occupancy rate (%), acute care hospitals only</td>
+</tr>
+<tr class="even">
+<td align="left">6300</td>
+<td align="left">NA</td>
+<td align="left">Outpatient contacts per person per year</td>
+</tr>
+<tr class="odd">
+<td align="left">6400</td>
+<td align="left">NA</td>
+<td align="left">Autopsy rate (%) for hospital deaths</td>
+</tr>
+<tr class="even">
+<td align="left">6410</td>
+<td align="left">NA</td>
+<td align="left">Autopsy rate (%) for all deaths</td>
+</tr>
+<tr class="odd">
+<td align="left">6420</td>
+<td align="left">NA</td>
+<td align="left">Surgical wound infection rate (%), all operations</td>
+</tr>
+<tr class="even">
+<td align="left">6440</td>
+<td align="left">NA</td>
+<td align="left">SDR, appendicitis, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">6441</td>
+<td align="left">6440</td>
+<td align="left">SDR, appendicitis, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">6442</td>
+<td align="left">6440</td>
+<td align="left">SDR, appendicitis, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">6450</td>
+<td align="left">NA</td>
+<td align="left">SDR, appendicitis, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">6451</td>
+<td align="left">6450</td>
+<td align="left">SDR, appendicitis, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">6452</td>
+<td align="left">6450</td>
+<td align="left">SDR, appendicitis, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">6460</td>
+<td align="left">NA</td>
+<td align="left">SDR, hernia and intestinal obstruction, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">6461</td>
+<td align="left">6460</td>
+<td align="left">SDR, hernia and intestinal obstruction, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">6462</td>
+<td align="left">6460</td>
+<td align="left">SDR, hernia and intestinal obstruction, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">6470</td>
+<td align="left">NA</td>
+<td align="left">SDR, hernia and intestinal obstruction, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">6471</td>
+<td align="left">6470</td>
+<td align="left">SDR, hernia and intestinal obstruction, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">6472</td>
+<td align="left">6470</td>
+<td align="left">SDR, hernia and intestinal obstruction, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">6480</td>
+<td align="left">NA</td>
+<td align="left">SDR, adverse effects of therapeutic agents, 064, per 100 000</td>
+</tr>
+<tr class="odd">
+<td align="left">6481</td>
+<td align="left">6480</td>
+<td align="left">SDR, adverse effects of therapeutic agents, 064, per 100 000, males</td>
+</tr>
+<tr class="even">
+<td align="left">6482</td>
+<td align="left">6480</td>
+<td align="left">SDR, adverse effects of therapeutic agents, 064, per 100 000, females</td>
+</tr>
+<tr class="odd">
+<td align="left">6490</td>
+<td align="left">NA</td>
+<td align="left">SDR, adverse effects of therapeutic agents, all ages, per 100 000</td>
+</tr>
+<tr class="even">
+<td align="left">6491</td>
+<td align="left">6490</td>
+<td align="left">SDR, adverse effects of therapeutic agents, all ages, per 100 000, males</td>
+</tr>
+<tr class="odd">
+<td align="left">6492</td>
+<td align="left">6490</td>
+<td align="left">SDR, adverse effects of therapeutic agents, all ages, per 100 000, females</td>
+</tr>
+<tr class="even">
+<td align="left">6710</td>
+<td align="left">NA</td>
+<td align="left">Total health expenditure as % of GDP, WHO estimates</td>
+</tr>
+<tr class="odd">
+<td align="left">6711</td>
+<td align="left">6710</td>
+<td align="left">Total health expenditure as % of GDP</td>
+</tr>
+<tr class="even">
+<td align="left">6712</td>
+<td align="left">6710</td>
+<td align="left">Public-sector expenditure on health as % of GDP, WHO estimates</td>
+</tr>
+<tr class="odd">
+<td align="left">6713</td>
+<td align="left">6710</td>
+<td align="left">Private-sector expenditure on health as % of GDP, WHO estimates</td>
+</tr>
+<tr class="even">
+<td align="left">6720</td>
+<td align="left">NA</td>
+<td align="left">Total health expenditure, PPP$ per capita, WHO estimates</td>
+</tr>
+<tr class="odd">
+<td align="left">6721</td>
+<td align="left">6720</td>
+<td align="left">Total health expenditure, PPP$ per capita</td>
+</tr>
+<tr class="even">
+<td align="left">6722</td>
+<td align="left">6720</td>
+<td align="left">Public expenditure on health, PPP$ per capita, WHO estimates</td>
+</tr>
+<tr class="odd">
+<td align="left">6730</td>
+<td align="left">NA</td>
+<td align="left">Public-sector health expenditure as % of total health expenditure, WHO estimates</td>
+</tr>
+<tr class="even">
+<td align="left">6731</td>
+<td align="left">6730</td>
+<td align="left">Public-sector health expenditure as % of total health expenditure</td>
+</tr>
+<tr class="odd">
+<td align="left">6732</td>
+<td align="left">6730</td>
+<td align="left">Private-sector expenditure on health as % of total health expenditure, WHO estimates</td>
+</tr>
+<tr class="even">
+<td align="left">6740</td>
+<td align="left">NA</td>
+<td align="left">Total inpatient expenditure as % of total health expenditure</td>
+</tr>
+<tr class="odd">
+<td align="left">6750</td>
+<td align="left">NA</td>
+<td align="left">Expenditure on inpatient care, PPP$ per capita</td>
+</tr>
+<tr class="even">
+<td align="left">6760</td>
+<td align="left">NA</td>
+<td align="left">Public inpatient expenditure as % of total inpatient expenditure</td>
+</tr>
+<tr class="odd">
+<td align="left">6770</td>
+<td align="left">NA</td>
+<td align="left">Total pharmaceutical expenditure as % of total health expenditure</td>
+</tr>
+<tr class="even">
+<td align="left">6780</td>
+<td align="left">NA</td>
+<td align="left">Pharmaceutical expenditure, PPP$ per capita</td>
+</tr>
+<tr class="odd">
+<td align="left">6790</td>
+<td align="left">NA</td>
+<td align="left">Public pharmaceutical expenditure as % of total pharmaceutical expenditure</td>
+</tr>
+<tr class="even">
+<td align="left">6800</td>
+<td align="left">NA</td>
+<td align="left">Total capital investment expenditure on medical facilities as % of total health expenditure</td>
+</tr>
+<tr class="odd">
+<td align="left">6810</td>
+<td align="left">NA</td>
+<td align="left">Salaries as % of total public health expenditure</td>
+</tr>
+<tr class="even">
+<td align="left">6850</td>
+<td align="left">NA</td>
+<td align="left">Public-sector expenditure on health as % of total government expenditure, WHO estimates</td>
+</tr>
+<tr class="odd">
+<td align="left">6860</td>
+<td align="left">NA</td>
+<td align="left">Private households’ out-of-pocket payments on health as % of total health expenditure</td>
+</tr>
+<tr class="even">
+<td align="left">6861</td>
+<td align="left">6860</td>
+<td align="left">Private households’ out-of-pocket payments on health as % of private-sector health expenditure</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="maternal-and-child-health" class="section level4">
+<h4>[8] MATERNAL AND CHILD HEALTH</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">IndID</th>
+<th align="left">IndPID</th>
+<th align="left">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">7010</td>
+<td align="left">NA</td>
+<td align="left">Abortions per 1000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">7011</td>
+<td align="left">7010</td>
+<td align="left">Number of abortions, all ages</td>
+</tr>
+<tr class="odd">
+<td align="left">7020</td>
+<td align="left">NA</td>
+<td align="left">Abortions per 1000 live births, age under 20 years</td>
+</tr>
+<tr class="even">
+<td align="left">7021</td>
+<td align="left">7020</td>
+<td align="left">Number of abortions, age under 20 years</td>
+</tr>
+<tr class="odd">
+<td align="left">7030</td>
+<td align="left">NA</td>
+<td align="left">Abortions per 1000 live births, age 35+ years</td>
+</tr>
+<tr class="even">
+<td align="left">7031</td>
+<td align="left">7030</td>
+<td align="left">Number of abortions, age 35+ years</td>
+</tr>
+<tr class="odd">
+<td align="left">7040</td>
+<td align="left">NA</td>
+<td align="left">% of all live births to mothers aged under 20 years</td>
+</tr>
+<tr class="even">
+<td align="left">7041</td>
+<td align="left">7040</td>
+<td align="left">Number of all live births to mothers aged under 20 years</td>
+</tr>
+<tr class="odd">
+<td align="left">7050</td>
+<td align="left">NA</td>
+<td align="left">% of all live births to mothers aged 35+ years</td>
+</tr>
+<tr class="even">
+<td align="left">7051</td>
+<td align="left">7050</td>
+<td align="left">Number of all live births, mothers aged 35+ years</td>
+</tr>
+<tr class="odd">
+<td align="left">7060</td>
+<td align="left">NA</td>
+<td align="left">Caesarean sections per 1000 live births</td>
+</tr>
+<tr class="even">
+<td align="left">7061</td>
+<td align="left">7060</td>
+<td align="left">Number of caesarean sections</td>
+</tr>
+<tr class="odd">
+<td align="left">7070</td>
+<td align="left">NA</td>
+<td align="left">Proportion (%) of births attended by skilled health personnel</td>
+</tr>
+<tr class="even">
+<td align="left">7080</td>
+<td align="left">NA</td>
+<td align="left">Contraceptive use among currently married women aged 1549 (%), any method</td>
+</tr>
+<tr class="odd">
+<td align="left">7100</td>
+<td align="left">NA</td>
+<td align="left">% of live births weighing 2500 g or more</td>
+</tr>
+<tr class="even">
+<td align="left">7110</td>
+<td align="left">NA</td>
+<td align="left">Congenital anomalies per 100 000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">7111</td>
+<td align="left">7110</td>
+<td align="left">Number of births with congenital anomalies</td>
+</tr>
+<tr class="even">
+<td align="left">7120</td>
+<td align="left">NA</td>
+<td align="left">Births with Down’s syndrome per 100 000 live births</td>
+</tr>
+<tr class="odd">
+<td align="left">7121</td>
+<td align="left">7120</td>
+<td align="left">Number of births with Down’s syndrome</td>
+</tr>
+<tr class="even">
+<td align="left">7150</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against tuberculosis</td>
+</tr>
+<tr class="odd">
+<td align="left">7160</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against diphtheria</td>
+</tr>
+<tr class="even">
+<td align="left">7170</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against tetanus</td>
+</tr>
+<tr class="odd">
+<td align="left">7180</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against pertussis</td>
+</tr>
+<tr class="even">
+<td align="left">7190</td>
+<td align="left">NA</td>
+<td align="left">% of children vaccinated against measles</td>
+</tr>
+<tr class="odd">
+<td align="left">7200</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against poliomyelitis</td>
+</tr>
+<tr class="even">
+<td align="left">7210</td>
+<td align="left">NA</td>
+<td align="left">% infants vaccinated against invasive disease due to Haemophilus influenzae type b</td>
+</tr>
+<tr class="odd">
+<td align="left">7220</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against hepatitis B</td>
+</tr>
+<tr class="even">
+<td align="left">7230</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against mumps</td>
+</tr>
+<tr class="odd">
+<td align="left">7240</td>
+<td align="left">NA</td>
+<td align="left">% of infants vaccinated against rubella</td>
+</tr>
+<tr class="even">
+<td align="left">7250</td>
+<td align="left">NA</td>
+<td align="left">% of infants breastfed at age 3 months</td>
+</tr>
+<tr class="odd">
+<td align="left">7260</td>
+<td align="left">NA</td>
+<td align="left">% of infants breastfed at age 6 months</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
